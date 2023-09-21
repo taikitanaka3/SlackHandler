@@ -1,0 +1,363 @@
+2023-09-02,canvas_in_the_conversation,2023-08-28,2023-09-01,2023-08-17,2023-08-24,2023-07-20,2023-08-20,2023-08-23,2023-06-30,2023-08-27,2023-08-13,2023-08-19,2023-08-26,2023-08-31,2023-08-14,2023-08-16,2023-08-21,2023-07-10,2023-09-07,2023-07-31,2023-07-26,2023-07-27,2023-06-26,2023-09-03,2023-07-30,2023-08-18,2023-09-15,2023-09-20,2023-06-14,2023-09-08,2023-08-15,2023-08-01
+"決勝大会への出場を予定しているチーム数は、社会人チームから9チーム、学生チームから7チームとなっております。ただし、ForRookieの大会で決勝大会への出場を希望するメンバー数や、本大会での出場を希望するチーム数によっては、出場資格が繰り上げられる可能性がございます。引き続き、皆様のご理解とご協力を賜りますようお願い申し上げます。
+
+さらに、今年度のインテグ大会の決勝大会の運営や冬季シミュレーション大会についても、このスラックでの情報共有を予定しております。継続的に参加を希望される方は、スラックのチェックをよろしくお願い申し上げます。
+ーーー
+The number of teams expected to participate in the final tournament consists of 9 teams from the working professionals category and 7 teams from the student category. However, depending on the number of members wishing to participate in the finals through the ForRookie tournament, and the number of teams desiring to participate from the main tournament, there might be a reshuffling of the teams qualifying for the finals. We sincerely ask for your understanding and continued cooperation on this matter.
+Furthermore, information sharing for the administration of this year's Integ Tournament finals and the Winter Simulation Tournament will also be conducted on this Slack channel. Those wishing to continue participating, please ensure you regularly check Slack. We greatly appreciate it.",,"<!channel>
+【コード提出締め切りに関するご案内】
+参加者の皆様
+
+本大会の終了が近づいてきましたので、提出の締め切り日時についてご案内いたします。
+締め切りは9月1日 12:00となります。
+締め切り後も提出ページにはアクセスいただけますが、提出は行えない状態となりますのでご了承ください。
+
+---
+
+[Notice Regarding Code Submission Deadline]
+To all participants,
+
+As the end of the tournament approaches, we would like to inform you about the deadline for code submission.
+The deadline is set for September 1st at 12:00.
+After the deadline, you will still be able to access the submission page, but you will not be able to make a submission.","<!channel>
+お疲れ様でした！
+スコアの集計や順位の発表は9月中旬頃を予定しております。
+次回の大会の参考とさせていただきたく、アンケートへのご記入や大会に関するフィードバックをいただけると幸いです。
+ーーー
+Thank you for your hard work!
+We plan to tally the scores and announce the rankings around mid-September.
+For the reference of our next tournament, we would appreciate it if you could fill out the survey and provide feedback on the tournament.
+
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1691995372662039>
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1690447176180919>","<!channel>
+こちらのPRでavoidanceによる回避経路が承認されない問題を解決しました。
+<@U05FH8SD2GM> ご協力ありがとうございました。
+（回避をAutowareでしない方針の場合はこのPRの変更を取り込まないままのほうが良いです。）
+----
+""I've confirmed that the RTC autonomode manager is not included in autoware.universe. As a result, while potential detour routes are suggested, they aren't approved, and the vehicle continues on its original path. I'll submit a PR for this later.""
+Note: ""PR"" is a commonly used abbreviation for ""Pull Request"" in the context of software development, so it's kept as is in the translation.
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/38>","Thanks for your reply. We have added a issue here. Please enable the re-registration ASAP.
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/41#issuecomment-1691542024>","<!channel> 参加者の皆様, To all Participants,
+
+(Please note that the English version follows below the Japanese announcement)
+
+*【最小構成Autoware 「Autoware-Mini」のLaunchファイルの提供について*:tada:*】*
+
+デフォルトのAutowareでは様々な走行環境に対応するため、たくさんのノードから構成されています．自動運転に関わる各コンポーネントで多種多様な機能を揃えており、難易度の高い走行環境にも対応できるように作られています．一方で、その複雑な構成を理解し、各パラメータの意味や調整の仕方、モジュールの切り替え・入れ替えなどを行うことが必ずしも容易ではなくなっています．
+
+そのため、今回は、*デフォルトのAutowareから機能を絞り、ノード数を減らした<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml|最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル>*を用意しました．
+
+詳細や使い方は、以下の公式ドキュメントページ「Customizing Autoware」をご覧ください！
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html>
+
+質問などはこちらのSlackチャンネルにお気軽に投稿ください！
+<#C05CJ9BJ96Y|questions_質問>
+---
+
+*【About the release of the ""Autoware-Mini"" Launch File*:tada:*】*
+
+Although the default Autoware is feature-rich and includes many components, the extra layer of complexity and the multiply nested launch files can be confusing for beginners or users who have simpler and more relaxed use cases.
+
+In Autoware-Mini, we tried to design a *<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml|launch file that launches only the most basic nodes that are crucial for a simple lane-following scenario>*. By limiting the features, we aim to create a *simpler version of Autoware: one that is easier to understand for users first trying out Autoware.*
+
+For more information and how you can start building up your software on top of Autoware-Mini, check out the official documentation for ""Customizing Autoware"" in the link below!
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/en/customize/index.html>
+
+For any questions or issues, please feel free to ask them in this Slack channel!
+ <#C05CJ9BJ96Y|questions_質問>","すみません．もう一つ質問なのですが，
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/avoidance/avoidance.param.yaml|リポジトリのデフォルトの状態>では，avoidanceでの回避は行われていないという認識で正しいでしょうか（enable_bound_clipping: false　かつ　disable_path_update: false）．
+
+シミュレーションごとに結果が大きく変わってしまうのは，ルールベースと最適化ベースの２つの回避が行われていることが原因だと思っていたのですが（<https://aichallenge2023-integ.slack.com/archives/C05C90ZCPQW/p1688699913897249?thread_ts=1688622424.337459&amp;cid=C05C90ZCPQW|スレッド>），実際はルールベースの回避だけでその現象が起きていたということでしょうか．","<!channel>
+Autowareでの物体認識がうまく機能していない、または<https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691144998677179?thread_ts=1690966523.148849&amp;cid=C05CJ9BJ96Y|安定しない>とのフィードバックがありました。この問題を調査した結果、最新版に変更を加えることとしました。
+影響を及ぼしている原因としてはいくつか考えられ、以下の点が挙げられます。（Autoware Miniを使用している方々はcenter pointを活用していないため、この問題の影響は受けません。）
+
+Autowareを初めて起動する際、`lidar_centerpoint`というノードがTensorRTの最適化を行い、`/autoware/install/lidar_centerpoint/share/lidar_centerpoint/data`ディレクトリに２つのengineファイルが生成されます。Dockerの環境下では、`docker commit`を行わない限り、変更したファイルが保存されません。その結果、Dockerを次回起動する際には、同じ処理を再度行う必要があり、約1分の待機時間が発生します。この問題を解決するために、.engineファイルをDockerに直接追加する方法も考慮しましたが、個々のGPU環境に応じて生成される.engineファイルが異なるため、都度生成が必要と判断しました。
+
+ローカル環境での対応方法:
+以下のコマンドを用いることで、ノードを個別に起動し、.engineファイルを生成することができます。
+```ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny
+ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint ```
+また、生成された.engineファイルを`docker commit`することで、Dockerを次回起動する際の問題を回避する方法も考えられます。
+
+オンラインの採点環境での対応:
+上記の問題への対策として、.engineファイルをオンラインのAWS環境で生成し、それを`docker commit`することで問題を解決する予定です。
+Center pointのconfigファイルが適切に設定されておらず、結果として検出精度が低下していました。このconfigファイルはAutoware launchから外部化されておらず、今回のコンペティションで簡単に変更できない形式となっていました。そのため、より安定した`center point tiny`を利用するように変更しました。
+最新のブランチにおいては、Autowareのデフォルト設定で`center_point_tiny`が使用されるようになっています。この変更は大きくありませんので、必ずしも最新の情報をpullする必要はありませんが、perception launchに関しては、以下のように変更することを推奨します。
+```&lt;arg name=""centerpoint_model_name"" default=""centerpoint_tiny""&gt;```
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/42>
+
+ーーーvia gpt
+There were reports that object recognition with Autoware is not working well and is unstable. After investigating, changes were made to the latest version.
+There were several causes, and the following seemed to have an influence. (Those using Autoware Mini are not affected as they don't use center point).
+Upon the initial start of Autoware, the node named ""lidar_centerpoint"" runs optimization with TensorRT, and two engine files are generated in /autoware/install/lidar_centerpoint/share/lidar_centerpoint/data. In Docker, unless you commit with docker commit, even if a file changes, it won't be saved. Thus, there was a need to wait for about a minute again upon the next Docker start. We also considered adding the .engine file to Docker, but since the .engine file produced varies by the individual's GPU environment, it needed to be generated every time.
+What can be done in a local environment:
+You can generate the .engine file by launching the node individually with the following commands:
+```ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny
+ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint ```
+Also, by committing the generated .engine file in Docker, you can avoid the same issue the next time you start Docker.
+Actions to be taken in the online scoring environment:
+To address the above issue, we plan to create the .engine file in the online AWS environment and address it by committing in Docker.
+The config file for the center point was not set as intended, resulting in reduced detection accuracy. The configuration for center point was not externalized in the autoware launch and was included in files that could not be easily changed for this competition. We changed to the more stable center point tiny in the following PR.
+In the latest branch, Autoware default now uses center point tiny. There aren't many changes, so you don't necessarily have to pull, but we recommend changing the perception launch as follows:
+```&lt;arg name=""centerpoint_model_name"" default=""centerpoint_tiny"" ```
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/42>","<!channel>
+参加者の皆様
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim>
+本大会用リポジトリを更新いたしました。
+更新内容は以下の通りです。
+
+ドキュメント：
+• 一部の画像を修正しました。
+ROS2パッケージ：
+• シミュレータでは霧の影響を受けないため、課題2は常に成功とみなすように変更しました。
+AWSIM：
+• 画面にスコア・ペナルティ表示を追加しました。
+ルール・ローカル環境に関する内容は今回の更新で最終版となります。
+
+※AWSIMを更新しているため、google driveから最新版をダウンロードお願いします。
+※ご質問等があれば、上記リポジトリのIssueへご投稿ください。
+
+---
+
+Dear Participants
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim>
+The repository for this competition has been updated.
+The updates are as follows
+
+Documentation:
+• Some images have been corrected.
+ROS2 package:
+• Changed so that task 2 is always considered a success since the simulator is not affected by fog.
+AWSIM:
+• Added score/penalty display to the screen.
+This update is the final version of the content regarding rules and local environment.
+
+*Please download the latest version from google drive as we updated AWSIM.
+*If you have any questions, please post them to Issue in the repository above.Participants","<@U05FDLCUYG6>
+&gt; Is the engine files added to the docker
+no it is onlty added to online environment docker we  dont provide participants but it is not added to local environment docker we have provided.","<!channel>
+【自動運転AIチャレンジのアンケートにご協力ください】
+
+参加者の皆様へ
+
+この度は自動運転AIチャレンジにご参加いただき誠にありがとうございます。
+参加者の皆様の登録メールアドレスにも送付いたしましたが、下記URLのアンケート記入にご協力ください。
+<https://forms.office.com/r/VL8JSda1it>
+
+参加者によりよい経験を提供する目的で実施いたします。
+皆様の忌憚ないご意見を頂けますと幸いです。
+
+【Please fill out Japan Automotive AI Challenge survey.】
+
+Dear participants
+
+Thank you very much for participating in the Automated Driving AI Challenge.
+As we have sent to the registered email addresses of all participants, please fill out the questionnaire at the URL below.
+<https://forms.office.com/r/VL8JSda1it>
+
+The purpose of this survey is to provide participants with a better experience.
+We would appreciate your frank opinions.","ありがとうございます．
+2に関してはパラメータを変えていった結果，回避させることができました．1の場合はやはりまだ回避ができません．
+RTC Manager Panelを確認したのですが，最初の道が狭い場所ではチラチラと黄色のavoidance_rightやavoidance_leftが表示されるのですが，障害物の手前では表示されないという状況です．
+
+また，<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1692346588820719|こちら>にも関連する質問になってしまうのですが，ルールベースと最適化ベースをどちらも使う場合はどのような設定になるのでしょうか．
+よろしくお願いします．","Is the engine files added to the docker? Now, even after pulling the latest docker the engine files ar getting generated which makes the online evaluation in local go un initialised.","<!channel>
+*予選終了まであとわずか！ 提出締切は9月1日 12:00 (JST)、残り6時間です！*:clock6:
+皆様のラストスパート、期待しております！
+
+*Time for lats sprint! The submission deadline is September 1st, 12:00 PM (JST), 6 hours left!*:fire:
+We are looking forward to receiving your last submission with excitement!","<@U05CCP5L7D3> <@U05CFHNAZ8B>
+お世話になっております．
+<https://aichallenge.synesthesias.jp|オンライン採点環境>にメールでいただいたIDとPWを入力すると以下のように表示されログインができませんでした．
+&gt; Temporary password has expired and must be reset by an administrator.
+また，Reset your passwordのページでusernameを記入しても以下のように表示されました．
+&gt; User password cannot be reset in the current state.
+お忙しいところお手数をおかけしますが，ご対応お願いできますでしょうか．宜しくお願いいたします．",投稿しました！！,"<@U05HA0QHPKJ>
+大変おまたせいたしました。
+先程、再発行のメールをお送りいたしましたので、ご確認お願いします。","<!channel>
+参加者の皆様
+無料ワークショップのご案内です（7/13 18:00〜）
+今週の木曜日にティアフォー主催の「自動運転におけるAIコンピューティング」を開催します。
+自動運転やエッジAI、センシング/パーセプションをカバーする構成となっており、広い範囲のエンジニアの方に興味を持って頂けると思います。
+2件の招待講演（早稲田大学笠原先生、NVIDIA様）もあり、既にオンラインで900名近い参加登録があります！
+また、多くの参加登録に感謝し弊社開発の車載カメラC1のプレゼントキャンペーンも実施します。:tada:
+登録まだの方、是非ご登録下さい！（※現時点で残り枠は約100名分です）:raised_hands:
+
+ーーー
+We are delighted to announce a free workshop scheduled for this Thursday, July 13, at 6:00 PM, hosted by Tier4. The event is titled ""AI Computing in Autonomous Driving.""
+The workshop will cover topics like autonomous driving, Edge AI, and sensing/perception, offering a wide range of interest for many engineers. We are excited to feature two keynote speeches by Professor Kasahara from Waseda University and a representative from NVIDIA.
+The response to this workshop has been overwhelming, with nearly 900 registrations received online! To express our gratitude, we are also launching a giveaway campaign for our in-house developed onboard camera C1. :tada:
+For those who have not yet registered, we encourage you to do so. There are only about 100 spots left as of now.
+We look forward to seeing you at the workshop!
+
+<https://tier4.connpass.com/event/286509/>","*<!channel>* 
+*【チーム紹介のアンケートへのご協力のお願い - Survey for Team Introductions】*:tada:
+
+自動運転AIチャレンジ2023 インテグレーション大会 予選大会にご参加の皆様、
+予選大会へのご参加ありがとうございました！お疲れ様でした．
+
+今回は、本大会のコミュニティやチーム同士の繋がりも大切にしたいと考え、*チーム紹介のページ*を本大会のウェブサイト（<https://automotiveaichallenge.github.io/aichallenge2023-sim/>）に掲載したいと思っています！以下のフォームからぜひ皆様のチームを思う存分紹介してください！
+
+*Google フォーム：*<https://docs.google.com/forms/d/e/1FAIpQLScBXQF0fL6DQEzl1Ew6656TKB-J64Zn3qmOJgFFJm8yvDUY8w/viewform?usp=sf_link>
+
+ご回答をお待ちしております．
+
+---
+Participants of the Japan Automotive AI Challenge 2023 Integration Competition,
+Thank you for joining the preliminaries, and we hope you had a great time!
+
+Although the preliminaries are over, we wanted to cherish the community we have here and the connections that can be made between different teams. As a first step, we wanted to create a ""Teams"" page on our website (<https://automotiveaichallenge.github.io/aichallenge2023-sim/en/index.html>), where we can introduce the teams that joined this year's preliminary rounds.
+Please introduce your team from the following form!
+
+*Google Form:* <https://docs.google.com/forms/d/e/1FAIpQLScBXQF0fL6DQEzl1Ew6656TKB-J64Zn3qmOJgFFJm8yvDUY8w/viewform?usp=sf_link>
+
+Please feel free to introduce your team and its members in any way you want!
+We are looking forward to your input.",以前共有させていただいたGoogleDriveのフォルダでは都度共有設定が必要で参加者の方からファイルのアップロードがしづらいという声も有り、こちらのGoogleFormで写真を提出していただくようお願いします。,"<!channel>
+【AWSIM実行ファイルの更新に関するお知らせ】
+以前のバージョンではバックギア時の挙動に問題があり、車両がバックできない不具合がありましたが、新しいバージョンにてこの問題を解消しております。
+以下のリンクから最新版をご利用ください。
+Linux向け
+<https://drive.google.com/file/d/1lbN5WeuTtqE6yKlU5MgiFjVB6rKOKeOc/view?usp=drive_link>
+Windows向け
+<https://drive.google.com/file/d/1gLkZdFnc_sJSyaymJgffXLqCpAZCcTbP/view?usp=drive_link>
+何か質問やご不明点があれば、お気軽にお知らせください。よろしくお願いいたします。
+
+---
+
+【AWSIM Execution File Update】
+In the previous version, there was an issue with the behavior during reverse gear, which prevented vehicles from backing up. However, we have resolved this problem in the latest version.
+You can access the updated execution files at the following links:
+For Linux:
+<https://drive.google.com/file/d/1lbN5WeuTtqE6yKlU5MgiFjVB6rKOKeOc/view?usp=drive_link>
+For Windows:
+<https://drive.google.com/file/d/1gLkZdFnc_sJSyaymJgffXLqCpAZCcTbP/view?usp=drive_link>
+If you have any questions or concerns, please feel free to let us know. Thank you very much for your cooperation.","<!channel>
+自動運転AIチャレンジ事務局です。
+この度は自動運転AIチャレンジ2023（インテグレーション）へのご参加を頂きまして誠にありがとうございます。
+
+さて、予選が始まりまして、ひと月が経とうとしております。皆様の状況いかがでしょうか。
+オンラインの競技だと、お互いの開発の様子が伝わりづらいと思います。
+そこで、AWSIMの開発風景を写真又は動画にてより多くの人に知ってもらいたいと考えております！
+宜しければ皆様の開発風景を下記アドレスのフォルダに投稿ください。
+<https://docs.google.com/forms/d/e/1FAIpQLSdOuJIZQNiFkigKaIEpMtxDQuJC8fG3X01qRbHWw0X2Uth0WQ/viewform?fbzx=6729936499611756454>
+
+頂いた写真・動画は、チーム名と共にTwitter（X）に投稿予定です。
+もし動画等と共に投稿してもらいたい意気込みやアピールなどありましたら、一緒に投稿頂ければ反映します。
+皆様のご応募お待ちしております:man-bowing:","<!channel>
+参加者の皆様
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim>
+本大会用のリポジトリに以下を追加いたしました！
+• ドキュメント
+    ◦ <https://automotiveaichallenge.github.io/aichallenge2023-sim/rule/index.html|競技ルール>
+    ◦ <https://automotiveaichallenge.github.io/aichallenge2023-sim/local/index.html|サンプルコード>
+• ROS2パッケージ
+    ◦ 自動採点用パッケージ
+    ◦ サンプルコード
+主にローカル環境で開発を進めていただくにあたって必要な内容が追加されております。
+最新版をpullしていただいた上でまずはサンプルコードの動作等ご確認お願いいたします。
+
+※セットアップ手順、ファイル構成等一部変更しておりますのでお手数ですが環境構築から再度実行お願いいたします。
+※ご質問等があれば、上記リポジトリのIssueへご投稿ください。
+※リポジトリ内容は大会開始日までに変更される可能性があります。
+
+---
+Dear Participants,
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim>
+The following has been added to the repository for this competition
+• Documentation
+    ◦ <https://automotiveaichallenge.github.io/aichallenge2023-sim/en/rule/index.html|Competition Rules>
+    ◦ <https://automotiveaichallenge.github.io/aichallenge2023-sim/en/local/index.html|Sample code>
+• ROS2 Package
+    ◦ Package for automatic scoring
+    ◦ Sample Code
+The new version has been added mainly for development in the local environment.
+Please pull the latest version and check the sample code first.
+
+• Please execute again from the environment construction because the setup procedure, file composition, etc. have been partially changed.
+• If you have any questions, please submit them to Issue in the repository above.
+• Please note that the repository contents may be changed before the start of the competition.
+","<!channel>
+AI Challenge スポンサー及び運営サポート募集のお知らせ
+• スポンサーの募集
+AI Challengeは継続的にスポンサーを必要としております。車両、センサー、ロボットなどの提供が可能であれば、お知らせいただけると幸いです。多くのスポンサーに支えられているこのイベントの成功のため、引き続きのご支援を心よりお願い申し上げます。
+• 決勝大会について
+決勝大会の事前準備は柏の葉で11/9(木)、11/11(土)に行われ、11/12(日)が決勝大会となります。
+今年度の決勝大会で使用するAutowareの環境構築をスムーズに行うため、参加者にThinkPadの貸し出しを行います。このThinkPadはWoven様からのご提供です。Woven様に深く感謝申し上げます。
+• 来年度の大会運営について
+これまで運営は限定されたメンバーで行ってきましたが、多様な意見を取り入れるためや新しいイベント企画を検討するため、来年度は運営サポートを一般から募集します。
+今回の大会での貢献者には、運営から直接DMで連絡することがありますので、ご了承ください。documentationサポート、競技内容及び実装のベータ版テスター、競技運営サポート、参加者の質問対応サポートなど、部分的なサポートも大歓迎です。運営メンバであっても今まで通り競技の参加も可能です。
+皆様の参加と協力を心から期待しております。詳細やお問い合わせは、@AIChallenge運営_田中までお願いいたします。","nice, but unfortunately I forgot my teams name. :sweat_smile: . can you message me my team name? my email id sezan92[at]gmail[dot]com","<!channel>
+
+参加者の皆様
+
+【オンライン環境にログインする際のPWに関するお知らせ】
+
+①：初期PWでログインしようとすると下記エラーが表示され、ログインできないとの声をいただいております。
+こちらに関しては、初期PWの有効期限が切れたことが原因で発生している問題であり、現在、再登録のための作業を行っている状況です。
+対応完了まで、もうしばらくお待ち下さい。完了次第、こちらにて共有させていただきます。
+`Temporary password has expired and must be reset by an administrator.`
+
+②：①の通り、初期PWには有効期限が定められておりますため、再登録完了後は7日以内に一旦ログインしていただき、PWの変更をお願いします。
+
+③：今後、有効期限切れPWの再登録は月曜・木曜にまとめて対応をさせていただきます。方法などの詳細は後日、再登録作業が完了した際にご案内いたします。
+
+④：初期PWではないPWを忘れた場合は、ログイン画面にある「Reset password」から再登録をお願いします。
+
+
+お手数をおかけして大変申し訳ありません
+皆様よろしくお願いします。
+
+----
+
+To all participants
+
+【Notice regarding PW when logging in to the online environment】
+
+①: We have been receiving feedback that the following error message is displayed when you try to log in with your initial PW and you are unable to log in.
+This problem is caused by the expiration of the initial PW, and we are currently working on re-registering it. We are currently working on re-registering you. We will share the issue here as soon as it is completed.
+`Temporary password has expired and must be reset by an administrator.`
+
+②: As stated in ① above, the initial PW has an expiration date, so please log in once within 7 days after the re-registration is completed and change your PW.
+
+③: Re-registration of expired PWs will be handled collectively on Mondays and Thursdays. Details on how to do this will be provided at a later date when the re-registration process is completed.
+
+④: If you have forgotten a PW that is not your initial PW, please re-register from ""Reset password"" on the login screen.
+
+
+We are very sorry for any inconvenience this may cause you.
+Thank you all for your cooperation.",先ほど回答いたしました〜,"<!channel> [決勝大会進出者の方]
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/finals/index.html>
+まだ決勝大会用のPCが届いていない方がいらっしゃることを受けて、来週の月曜日に決勝大会用のドキュメントを整備完了予定としています。
+追記予定の内容は以下になります。
+• logsim &amp; rosbagの使い方
+• 続行不可能とし、競技中断をする基準の共有
+• 本番のスケジュールの共有（基本的に把握指定なくても進行できるように運営側で準備予定です）
+また、今回のドキュメント作成にはチーム　IASLさんの協力をいただきました。
+<@U05ECN3BXMG> <@U05EFRRJ3EY> <@U05E4AVJG87>
+ありがとうございました。",<@U05C14GC97Z>さんがチャンネルに参加しました,"お疲れ様です
+こちらのフォームですが、リンク先で以下のようになり、アクセスできないようです。
+設定の問題でしょうか？","<@U05CFHNAZ8B> <@U05CCP5L7D3> <@U05CJ88GTT6> <@U05C14GC97Z>
+お世話になっております．
+↑の件，いかがでしょうか？","*<!channel>*
+【オンライン採点環境に関するお知らせ】
+<https://aichallenge.synesthesias.jp/>
+本大会で作成いただいたコードの提出・評価を行うオンライン採点環境を公開いたしました。
+今日から明日にかけて順次参加者の皆様にメールにてオンライン採点環境への招待送らせていただきますので、
+メール届きましたらメール内容に従ってご利用ください。
+
+オンライン採点環境の使用方法については<https://automotiveaichallenge.github.io/aichallenge2023-sim/online/index.html|こちら>をご参照ください。
+また、<https://automotiveaichallenge.github.io/aichallenge2023-sim/rule/index.html#regulation|競技ルールでのRegulation> について追記しておりますのでこちらも併せてご確認お願いいたします。
+
+---
+
+【Notice Regarding Online Scoring Environment】
+We are pleased to announce the release of the online scoring environment for the submission and evaluation of codes created in this competition.
+Please visit the following link: <https://aichallenge.synesthesias.jp/>
+Starting today and continuing through tomorrow, we will send invitations to all participants via email to access the online scoring environment. Upon receiving the email, kindly follow the instructions provided in the email to proceed with the utilization.
+
+For information on how to use the online scoring environment, please refer to <https://automotiveaichallenge.github.io/aichallenge2023-sim/online/index.html|here>. Additionally, we have made updates to <https://automotiveaichallenge.github.io/aichallenge2023-sim/rule/index.html#regulation|the competition rules in the Regulation section>. We kindly request you to review it as well."

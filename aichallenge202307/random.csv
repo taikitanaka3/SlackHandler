@@ -1,0 +1,369 @@
+2023-07-21,2023-08-11,2023-06-20,2023-07-14,canvas_in_the_conversation,2023-08-17,2023-06-30,2023-08-13,2023-08-31,2023-06-28,2023-08-14,2023-07-13,2023-09-07,2023-08-06,2023-09-09,2023-07-05,2023-07-26,2023-06-29,2023-07-27,2023-07-06,2023-07-30,2023-09-06,2023-07-01,2023-08-18,2023-09-15,2023-07-28,2023-08-05,2023-07-09,2023-09-14,2023-06-14,2023-09-08,2023-08-15,2023-08-22,2023-07-11,2023-06-19,2023-07-12,2023-09-12
+"シミュレーションをする際にAutowareとAWSIM用に2つのコンテナを立てることになります．
+シミュレーションがうまくいかなくてコンテナを停止しようと""exit""をしても""There are stopped jobs.""と表示されてうまく停止できないことがあります（少し待てば停止できます）．
+そしてコンテナを起動したまま新たにコンテナを起動するとシミュレーションはうまくいかないようです．
+シミュレーションがうまくいかなかったら，余計なコンテナが起動していないかを確認した方がいいかもしれません．
+私はいくつかのコンテナを起動したまま新しくコンテナを起動したので，うまくいきませんでした．
+ここでかなり躓いたので共有します．","何回か参加してますがWindowsのWSL2は環境構築激渋で断念しましたね…(デュアルブートも検討しましたが)
+諦めてOS無しのデスクトップ買ってUbuntu入れるのが一番手っ取り早かったです","ドキュメントを見ながら調整したらなんとなくですが動作が改善しました！
+改めてありがとうございました。","そちらのonly for vehicleは車両モデルを仮定した回避という意味なので、大丈夫です。
+
+その他に関してはわからないので、すみません、回答できないです。",,"Autoware-miniでなぜか回避しない問題の理由を考えているのですが，なにか知見がおありの方で教えていただける方いらっしゃいますでしょうか．
+通常のAutowareでrtc_auto_manager.param.yamlのavoidance_leftとavoidance_rightを削除すると似たような挙動（回避経路は計算しているようだが，軌道は一直線）になるような気がしているのですが，それ以外何もわからずというような状況です．","コンテナ上でAutowareを立ち上げると、RVIZ画面が真っ暗になるのですが、PCスペックの問題でしょうか？
+解決策をご存じの方いらっしゃいましたら教えていただけるとありがたいです。
+GPUは1080Tiを使ってます。","特にシミュレーションには問題ない？話なのですが、
+複数の方の環境ではコンテナを起動したまま新しいAutowareシミュレーションを起動できるようですが(コンテナはそのままでウィンドウを閉じてもう一度起動)、
+私の環境ではコンテナを再起動しないとシミュレーションが開始されません(exitが必ず必要)。","今回のチャレンジはとても難易度が高いチャレンジになっています。
+Documentaionを読んで調べたり、自作パッケージの作成したり、Autowareのパラメータチューニング追い込んだり様々な方法で頑張りましょう！！！","<!channel>
+今年度の大会では課題が難しいため情報の共有を推奨しています。
+ぜひチーム関係なく議論してノウハウを共有指定っていただけたらと思っています。
+
+たまたま見つけた記事ですが、よくまとまっていたので、ぜひ読んでみてください。
+<https://qiita.com/h_bog/items/8bce776fef0a39676c46>","私の方では常に以下をしていました、コンテナを起動したまま新しいAutowareシミュレーションを起動するパターンもあるのですね！！（READMEを素直に解釈した時に、再起動するのが通常の手順かとばっかり思い込んでいました。。）
+
+&gt; コンテナを再起動しないとシミュレーションが開始されません(exitが必ず必要)","<https://autowarefoundation.github.io/autoware.universe/main/planning/behavior_path_planner/docs/behavior_path_planner_avoidance_design/|Avoidanceのドキュメント> には「Fo now, avoidance module supports only vehicle.」とありますがAvoidanceは車両にしか対応していないのではないでしょうか。
+私の環境では<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/avoidance/avoidance.param.yaml#L29|パラメータ>のcarをfalseにすると回避経路を作成しない動作になります。
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L124|obstacle_avoidance_planner> のパラメータをbicycle_modelにするともう少し回避経路を詰めることができると思いますのでそちらのアプローチをしてみたいと思います。radius_ratioをもう少し小さい値にすればもっとギリギリになると期待しています","*チーム紹介プチ大会をやってみたい！*
+
+チーム紹介:iisune:ボタンご協力ありがとうございます！
+有志による有志のためのチーム紹介、9/15(金)18:30-19:30 に試みます！
+（もし都合合わない方おられましたら本当にすみません…）
+１チーム１〜５分くらい、メンバ紹介、イチオシポイント等、固くないチーム紹介ができれば嬉しいです
+誰でも参加OKです、予選期間は多忙だった方などもぜひご参加ください&gt;&lt;
+
+&gt; チーム紹介プチ大会をやってみたいとふんわり思っています。
+&gt; *チーム紹介プチ大会*
+&gt; 時間: 2023年9月15日 06:30 PM JST
+&gt; Zoomミーティングに参加する
+&gt; <https://us06web.zoom.us/j/81840076035?pwd=WmhkbmhEd3ZaWXJVVW9lK2VxaEcwUT09>
+&gt; ミーティングID: 818 4007 6035
+&gt; パスコード: 896332
+*発表希望の方は、*:point_down:*こちらにチーム名記載下さい。*（1チーム何枠でもOK、当日まで編集OK）
+<https://docs.google.com/spreadsheets/d/18pghXHQe2WbXKOG9FahdmB9WWIvnEkEAsAbKYVfL-tQ/edit#gid=0>
+もし万が一記載できない場合はスレッドに発表チーム名のコメント下さい
+
+*connpassも公開*
+&gt; （リンクは上記と同様、もし友人などを誘ってみたい場合はこちらから）
+&gt; <https://connpass.com/event/295843/>","私は昔、個人的に買ったこちらをずっと使っています（そろそろ限界もしれない、、）
+&gt; *ZBOX* EN52060V
+&gt; <https://www.zotac.com/jp/product/mini_pcs/magnus-en52060v>",Is the team introduction is open for English version? Like outside Japan? Someone can update both this message and doc in English?,"パラメータが多すぎてどのパラメータがどこに効いているのか非常に分かりづらいですね。
+おそらくいくつかのパラメータは相互依存の関係を持っていて大小関係を間違えると動かなくなったりします。
+まずは車速を落とすこと、jerkを大きくすると曲がりやすくなるような気がします。
+jerkなどパラメータ範囲はどこかのdocumentにないでしょうか？（jerkの最大値は2.5くらい？）
+2つ目の障害物まではなんとかいくこともあるのですがそこから回避経路が生成できなくなる（しなくなる？）のでそれから全くすすまないですね。
+documentを読んでもあまり理解できていないのですがAvoidanceは車両（car）特に路上駐車にしか対応してないので車線をふさいでいる障害物はAvoidanceでは回避できないのでは？と思っています。","雑談程度の細かい話なのですが，Behavior Plannerが計算するのは，trajectoryではなくPathな気がするのですが，もしこれが正しい場合，誤植を伝える方法はあるのでしょうか．それとも，イシューを立ててプルリクするような形なのでしょうか．
+<https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-architecture/planning/#high-level-architecture>","雑談程度に
+参加したいところなんですがPCスペックが足りず...。何かいいアイディアないものでしょうか","ありがとうございます
+よろしくお願いします","早急なご回答有り難うございます。
+Motion Velocity Smootherのjerk_weightはデフォルトが10に対して今回のコンテストでは0.1に設定されているのでもう少し調整してみます。
+jerkそのものの値を設定しているのはこちらのファイルかと思っていましたがこちらでも設定できますでしょうか？
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/common/motion_velocity_smoother/motion_velocity_smoother.param.yaml|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aich[…]on/motion_velocity_smoother/motion_velocity_smoother.param.yaml>
+
+Avoidanceでは車両中心がレーンの中心から許容範囲(threshold_distance_object_is_on_center)にある車両は回避対象ではなくなってしまいます。1個めと2個めの障害物はレーン中心から外れているんので駐車車両としてみなされますが、3個めの障害物は車線とほぼ同じなので駐車車両としてみなされないのではないでしょうか？","すでにどこかで展開されているかもしれませんが、planner/controllerモジュールのパラメータ調整でざっくりあたりをつけるには、planning_simulatorを使うと便利ですね。。
+自分のPCスペックが足りてないだけかもしれませんが、AWSIMで毎回パラメータ調整やっているとシミュレータの立上げに非常に時間がかかるので重宝しています。
+<https://autowarefoundation.github.io/autoware-documentation/main/tutorials/ad-hoc-simulation/planning-simulation/>
+
+AWSIMを何回か起動していると、だんだん立ち上がりが遅くなっているように思うのですが、、キャッシュか何かたまってるのでしょうか。。","*チーム紹介プチ大会をやってみたい！*
+randomなので勇気を持って雑談を投稿させて頂こうと思うのですが、チーム紹介プチ大会をやってみたいとふんわり思っています。
+予選期間中（特に夏休み付近）は競技に集中しすぎて、他チームの方とコミュニケーションを取れていないことにモヤモヤしておりました！
+もしチーム紹介やってみたい方おられましたら:iisune:ボタン押して頂ければ嬉しいです。せっかくなのでいいだしっぺが進行含めてやります。
+ゆるく交流できると嬉しいです。（１チーム１〜５分くらいなイメージです）","<@U05CFHNAZ8B>
+休日にもかかわず、ご対応ありがとうございます。
+AWSIM側でros2 topic listを実行するとトピックは出力されていそうです。
+ただ、AWSIMを立ち上げてもLOCALIZEができず、Autoに移行しなかったです。
+そもそもコンテナ内で""rviz2""コマンドを打った時点で画面が真っ暗だったので、dockerの設定の可能性が高いです（コンテナの外でrviz2は正常に立ち上がります）
+
+上のchatGPTの回答ですが、素人で申し訳ありませんが、rockerを使った場合、どの設定を変更すればよいかがちょっとわかりませんでした。。
+```Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。```",ありがとうございます！,本日です、よろしくお願いいたします〜,"<@U05CE8WCNKY>
+すみません、こちら少し公開が遅れそうで、来週の月曜日あたりになる予定です。
+（AutowareMiniでは上記の問題が解決されているため、参考にされてもよいかもしれません）","シミュレーション環境を構築しようと1ヵ月ほど試行錯誤しています。このようなコンテストへの参加は初めてなのですが参加されているかたはどのような環境で事項しているのでしょうか？
+私の場合は
+• Local PC (Windows11) : WSL2にてUbuntu22.04を実行しDockerをインストール→dockerがうまく実行できず断念
+• AWS : GPUを使用するためg4dnインスタンス利用申請→何度やっても申請不許可で断念
+• GCP : GPUを使用するためGPU利用申請をし許可される。実際にインスタンスを作成しようとするが実行可能リージョンが見つからず片っ端から試し２週間ほどでインスタンス作成成功。その後、sshとVNCでdesktop環境を構築
+とかなり環境構築だけで苦労しました。他の方はどうやっているのか興味本位で質問させていただきます。","アドバイスありがとうございます。
+PathPlanningのようなモジュールを作成したいのですが力不足なのでまずはパラメータ調整でがんばっていきます。
+まだmotionの最適化がうまくコントロールできていないと思います。
+avoidanceで回避経路を作成してそのまますすむとしたいのですが最適化が加わるためか真っ直ぐに進もうとしてしまうようです。
+avoidanceになるべく寄せるようにjerkを150くらいに大きく設定しmotionの最適化をもう少し調整したいと思っています。","明日です！引き続き発表枠募集中です！（ゆるいイベントです）
+聞き専OKです！にぎやかしで参加ハードル下げてくださる方募集中です！
+<https://connpass.com/event/295843/|https://connpass.com/event/295843/>
+
+
+チーム紹介formも登録していきましょう！
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1694147044273109|https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1694147044273109>",<@U05C14GC97Z>さんがチャンネルに参加しました,ハードル下げ係で参加します！アンケートも宣伝しましょう！,"ありがとうございます！
+毎回コンテナを再起動されている方がいらっしゃってよかったです！
+exitについては書いてなかったので、コンテナそのままでもいけるのかな？と思ってました。","みなさん完走できましたか？
+Slackの過去ログ全部見て参考にしましたが、最初の障害物回避で回避のパスが生成されない問題で未だに躓いてます笑
+参加されてる方の何割が果たして完走できるんでしょうか。。。
+なかなか難易度高いですね","最適化？のことについてすこし教えてください
+先のコメントだとMotionPlanningで最適化が行われているということなのですがObstacle Avoidance Plannerでおもに回避経路が生成されているとおもっておりますがあっておりますでしょうか。（下記参照）
+
+LaneDrivingSenarioの中にあるBehaviorPathPlanning（BehaviorPathPlannerのAvoidance）で回避経路の生成（ルールベース）、
+LaneDrivingSenarioの中にあるMotionPlanning（ObstacleAvoidancePlanner）でさらに回避経路の生成（最適化ベース）
+
+LaneDrivingSenarioで生成された経路をMotionVelocitySmootherでリサンプルしてPlanningValidatorで検証するという流れでしょうか？？<https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-architecture/planning/>",すみません、こちらの方が参加人数が多かったので再掲させていただきます。,"アドバイスありがとうございます。参考にさせていただきます。
+いくつかお聞きしたいことがあるのですがよろしいでしょうか。
+回避（<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L104|avoidanceのパラメータ>）について(max_avoidance_costとか)Documentにもコメントがないのですがどこかにないでしょうか？
+
+また、駐車している車両の大きさを検知しているのですが車両の大きさを調整するパラメータはありませんでしょうか？
+具体的には青枠で検出される車両の長手方向の大きさをもう少し小さくできればもっとスムーズにスラローム移動できるのではないかと考えております。","引き続き募集中です！
+聞き専OKです！参加ハードル下げに協力していただけると泣いて喜びます！
+（ゆるいイベントのため）
+<https://connpass.com/event/295843/>
+
+チーム紹介formも登録していきましょう！
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1694147044273109>"
+"動画のように物体の大きさを誤認識することがあり経路作成に大きな影響があるため改善したいです。
+euclidean_clusterについては<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml#L388|こちらのautoware-mini> でパラメータ読み込んでますが、<https://github.com/autowarefoundation/autoware.universe/blob/main/perception/euclidean_cluster/config/voxel_grid_based_euclidean_cluster.param.yaml|デフォルトのAutoware.universe> から読み込まれています。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml#L524|Avoidanceのパラメータ> とおなじようにconfigを追加しても問題ないでしょうか？",,,,,,"エラーログなど出てないか。
+nvidia-smiと打ってみる。
+AWSIMのターミナルログ出てないか。
+あたりをみてみてもらえます？",,"お疲れ様でした！暫定順位上位の方のリザルトをいくつか見ましたが、みなさんTask3が完走できなかった人が多いみたいですね
+もしかして今回完走者０・・・？
+
+
+大会終わった後に全課題クリアするための解説みたいなのあると
+個人的に嬉しいなーと思っています。",,今更ですが、PC台数なら私のチーム結構あるので、この辺りPCリソースうまく共有できると良いな、、と思うなどしました。（具体的なアイデアは特になく、、）,,"connpassにも公開してみました
+（友人などを誘ってみたい場合はこちらから）
+<https://connpass.com/event/295843/>",,i'll translate!! welcome!!,"<@U05CJ0M1A05>
+走行時の滑らかさはmotion velocity smootherで担保しています。
+<https://autowarefoundation.github.io/autoware.universe/main/planning/motion_velocity_smoother/>
+
+パラメータはこのあたりです。JerkFilterがデフォルトになっています。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/tree/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/common/motion_velocity_smoother|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/tree/main/docker/aich[…]nfig/planning/scenario_planning/common/motion_velocity_smoother>
+
+また、回避に関しては
+• ルールベースのbehavior path planning のavoidance
+<https://autowarefoundation.github.io/autoware.universe/main/planning/behavior_path_planner/docs/behavior_path_planner_avoidance_design/>
+また、clusteringの結果をもとに回避したい場合はこのあたりのターゲットobjectを設定する形になります。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/ed597398dd9a860884c4faa9374cc9a08b9fa09a/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/avoidance/avoidance.param.yaml#L28|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/ed597398dd9a8608[…]r_planning/behavior_path_planner/avoidance/avoidance.param.yaml>
+
+
+• 最適化ベースのmotion planning obstacle avoidance
+<https://autowarefoundation.github.io/autoware.universe/main/planning/obstacle_avoidance_planner/>
+
+このあたりのパラメータになります。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aich[…]bstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml>","<@U05FH8SD2GM>
+ありがとうございます。コントリビューションは歓迎です。
+こちらにissueを立ててPRを送っていただけると助かります。assignはパッケージのメンテナでも問題ないですし、迷ったら私をメンションいただけると助かります。
+<https://github.com/autowarefoundation/autoware-documentation/issues>","<@U05CJ0LE58V>
+下記はあくまでも雑談程度ですが
+• GPUであれば1080Tiの中古がコスパがよくておすすめです。
+<https://www.janpara.co.jp/sale/search/result/?OUTCLSCODE=17&amp;PRBFLT30_FILTER[]=7>
+
+• CPUは多少のスペック差は許容できますが、core i3でみたいなのは対応できないので以下のようなものを買うのが良いと思います。
+<https://www.mouse-jp.co.jp/store/g/ggtune-dgi7g70b7accw101dec/>",,"<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/common/motion_velocity_smoother/motion_velocity_smoother.param.yaml|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/common/motion_velocity_smoother/motion_velocity_smoother.param.yaml>
+
+こちらではjerkではなく、速度制約と加速度制約が定義されていますね。パット確認できないですが、common paramで設定するのが良さそうです。
+
+あと、あくまでもアドバイスにはなりますが、autowareのデフォルトはあくまでもレクサスでとりあえず走ってみるくらいの感覚の設定なので、回避対象物の経路中心からの距離のしきい値をゼロにしたりは全然ありだと思います。",,"@channel
+こうした取り組みは大歓迎です！！！
+今後はチーム紹介ページなどをdocumentationに作成しようかと考えています。
+こちらのイベント私も参加させてください！","<@U05CFHNAZ8B>
+上記の件、<https://github.com/ros2/rviz/issues/948>
+を参考に以下で解決できました。シミュレーションも問題なく動いています。
+```add-apt-repository ppa:kisak/kisak-mesa
+apt update
+apt upgrade```",,"プチ大会ありがとうございました！:eyes:
+有志の方もお仕事等で忙しい中企画ありがとうございます！","asigneeを設定する方法が分からなかったのですが，どこで指定すればよかったでしょうか．
+すみません．よろしくお願いします．
+<https://github.com/autowarefoundation/autoware-documentation/pull/428>","私はこれですね。
+<https://karaage.hatenadiary.jp/entry/2023/04/03/073000|https://karaage.hatenadiary.jp/entry/2023/04/03/073000>",,"すみません！仕事の関係で今日参加できなくなりました(泣)
+申し訳ない…",<@U05CFHNAZ8B>さんがチャンネルに参加しました,浅部さん、kiwsさんありがとうございます:sob:,,,"<@U05CJ0M1A05>
+はい、上記の通りになります。
+&gt; Obstacle Avoidance Plannerでおもに回避経路が生成
+こちらの「主に」に関してはどう捉えるか次第なので、ルールベースの回避と最適化ベースの回避どちらが主体なのかということは特に無いです。","Documentationはこのあたりかと思います
+<https://autowarefoundation.github.io/autoware.universe/main/>
+<https://autowarefoundation.github.io/autoware-documentation/main/>
+おそらくパラメータ設定などで困っていられると思うので，前者のDocがいい気がしています
+添付画像のようにそれぞれ対応するモジュールのTabにDocがあってパラメータ定義などが確認できます
+例としてGlobal PlannerのObstacle Avoidanceに関するDocはこちらです
+<https://autowarefoundation.github.io/autoware.universe/main/planning/behavior_path_planner/docs/behavior_path_planner_avoidance_design/>","<@U05CJ0M1A05>
+obstacle avoidance plannerの説明としてはこちらにあります。
+<https://autowarefoundation.github.io/autoware.universe/main/planning/obstacle_avoidance_planner/docs/mpt/>
+
+ただ、上記のイメージではdefaultの車両、歩行者を検出するためのcenter pointをつかって検出しているため、
+どのようなアルゴリズムであっても大きく回避してしまうのは防げないかと思います。
+center pointを使わず、euclidiean cluster(unknownのclusteringのみ行う)のみで障害物検知することをおすすめします。
+(簡単なのは回避対象からcar やtruckを省くことかと思います。",
+"物体認識の改善
+1.デフォルトのcenterpointではなく、lidar apolloなどを使う、そもそも物体認識自体を使わななどの方針も有効かもしれません。
+2.euclidean clusterの改善ではunkwonの物体検出が改善されます。もちろんlaunchファイルを編集したり、configファイルを編集したりしても問題ないです。
+
+回避改善に関して
+回避対象物の選択から車などを排除し、unknownのみにするなども考えられます。",,,,,"<@U05FH8SD2GM> 
+取り急ぎの回答になってしまいますが、autoware.miniのlaunchファイルにrtc automode managerはいってなかったでしょうか？","ありがとうございます。
+AWSIM側のターミナルログやエラーログのようなものは出てないように見えます。。
+コンテナ内でnvidia-smiコマンドを打った結果、Autoware実行時のログを共有します。",,"&gt; 大会終わった後に全課題クリアするための解説みたいなのあると
+今回の課題はものすごく難しい課題に設定したため、このアルゴリズムであれば完走できるといったものは無いです。
+確約はできないですが、大会が終わるったあとくらいに運営で考えたアルゴリズムの公開などはしてみようかと思っています。
+
+今回の完全クリアは0人になります。",,,,（english忘れてるかも）,,"<@U05FDLCUYG6> san
+Can you register this event?
+(if not, please fill team name in <https://docs.google.com/spreadsheets/d/18pghXHQe2WbXKOG9FahdmB9WWIvnEkEAsAbKYVfL-tQ/edit#gid=0|this form directory>)
+<https://connpass.com/event/295843/>",,"<@U05CE8WCNKY> <@U05CJ0M1A05>
+昨日見つけた現象になりますが、デフォルトのautoware launchではclustering への入力点群がVLS128用のdown sampleによってほとんど消えてしまっていました。デフォルトでdownsampleは入れないような設定に変更しようと考えております。
+こちら明日あたりまでに修正をいれて公開予定です。（詳細は後ほど公開されますが、取り急ぎ共有させていただきます。）",,,"<https://aichallenge2023-integ.slack.com/archives/C05C90ZCPQW/p1688016755590749|https://aichallenge2023-integ.slack.com/archives/C05C90ZCPQW/p1688016755590749>
+こちらも是非参考にされてください。",,,"良かったです。
+
+あくまでも参考程度にですが、上記を追加する場合はこちらに引数を追加する形になるかと思いますが、まだ試せていないので、確証はないです。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/run_container.sh>",,"本日はお忙しい中ご参加ありがとうございました！（残念ながら不参加でも開催を支援してくださった方も本当にありがとうございました。）
+動画リンク（リンク限定公開の状態）を共有します。
+
+<https://www.youtube.com/watch?v=8D_TwU2YiIA>
+<https://www.youtube.com/watch?v=womFZuKP9Pg> (公開予定版 (上記 + 口頭発表者のスライド追加した版 ))
+
+connpassへのリンク公開は来週中くらいを目処に実施しようかと思っています。
+もしもconnpassへ動画公開されたくないよという方がいらっしゃいましたら --&gt; :scream:スタンプ押して頂ければと！",taikitanaka3で打ってもらえれば出てくると思います！,,,シモーネさんいつもありがとうございます、もし今後機会ありましたらハードル下げご協力ください:sob:,<@U05CCP5L7D3>さんがチャンネルに参加しました,"有志による有志のためのチーム紹介、発表ご協力いただける方を絶賛探しております！
+ゆるめの交流をしたいとおもっています！よろしくお願いします！ :pray:
+
+誰でも参加OKです、聞き専参加OKです、予選期間は多忙だった方などもぜひご参加ください&gt;&lt;
+（１チーム１〜５分くらい、メンバ紹介、イチオシポイント等、固くないチーム紹介をしたい）
+（突発の提案にすでに賛同頂けた方、感謝極まりないです）",,,"<@U05CJ0M1A05>
+obstacle avoidanceの調整方法について難しいかと思いますので、共有したいと思います。
+機能の<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L3|有効化・無効化のoption>に関してはこのパラメータになります。
+obstacle avoidance plannerでは最適化ベースの回避経路計画として<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L61|mpt>を使っておりこちらのパラメータ配下になります。
+• 経路生成時の滑らかさ&lt;-&gt;追従性のトレードオフについて
+    ◦ <https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L89C3-L89C3|weight>が車両のfoot print（予測走行軌跡）を drivable area(走行可能領域)に収めるためのweightになっています。
+    ◦ <https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L92|tracking error>のパラメータについて
+        ▪︎ lat errorを上げると横方向の追従性が良くなります。
+        ▪︎ yaw errorを上げると姿勢角の追従性が上がります。
+    ◦ <https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L95-L96|ステア角>に関するパラメータについて
+        ▪︎ steer_input_weight (= ステア角度をなるべく小さくしようとする重み) は生成される経路の曲率に大きく影響します。
+        ▪︎ デフォルトパラメータは乗用車用に曲率をなるべく小さくするようにしています。
+            • 小型ロボットで小回りをするような場合は、曲率が小さすぎると理想的な経路形状でなくなる可能性が高いので、曲率を大きくする (= steer_input_weightの大きさを小さくする) ことをおすすめします。
+• 回避（<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/3088fd1c1ff138c750851e8d4506bae2cb7f864f/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L104|avoidanceのパラメータ>）が回避時の挙動の調整に必要なパラメータになります。
+    ◦ avoidance配下のlat error, yaw error, steer input weightは経路追従時の上記のパラメータと同様です。
+上記の回避と経路追従性をうまく重み付けする必要があります。
+近距離障害物しか見れない今大会においては追従性や回避する側に大きめに重みを振ったほうがいいかもしれません。
+
+参考までによろしくお願いします。","ありがとうございます！
+さっそく確認してみます。",,
+"<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/5ae37774055467b60acd7f6bdfbee9ba2575d715/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_universe_launch/tier4_perception_launch/launch/object_recognition/detection/detection.launch.xml#L7|ここのパラメータ> でいくつか設定できるようですね
+すみません気が付きませんでした。試してみます
+clusteringというのは <https://autowarefoundation.github.io/autoware.universe/main/perception/image_projection_based_fusion/docs/roi-cluster-fusion/|こちらのroi-cluster-fusion/>でしょうか
+perceptionのドキュメントを探したのですが見つからず教えていただけないでしょうか ",,,,,"<@U05FH8SD2GM>
+フィードバックありがとうございます。
+autoware.universe にあるRTC autonomode managerが入っていないことが確認できました。
+これによって回避経路の候補は出るが、回避経路が承認されずにそのまま進んでしまうことが確認できました。
+こちら後ほどPR出します。
+ーー
+""I've confirmed that the RTC autonomode manager is not included in autoware.universe. As a result, while potential detour routes are suggested, they aren't approved, and the vehicle continues on its original path. I'll submit a PR for this later.""
+Note: ""PR"" is a commonly used abbreviation for ""Pull Request"" in the context of software development, so it's kept as is in the translation.","<@U05CZHCCXFT>
+autowareは正常に起動できていそうなので、Rvizのほうが問題な気がしています。（土日は早いresponseできずすみません）
+ros2 topic listでtopicが正常にでているか、AWSIM側を立ち上げれば走行は可能なのかなどを調べてもらえますか？",,,,,,"聞き専でも参加OKですか？
+仕事が忙しく、何か話せるほど工夫出来た点がないので（泣）",,Done :+1:,,,,,"ブログは拝見させていただいております。記事にもありますがシミュレータの仕様で同じパラメータでも異なる動作をすることがあり狙い通りのチューニングができているのか判断するのが悩ましいですね。
+2個目の障害物を避けた後に2個目の障害物ぎりぎり通過すると3個目の障害物経路を避けることがまれにありそうなのでもう少しパラメータチューニングしてみます。",,,,,"Thank you for taking time out of your busy schedule to join us today! (Thank you very much to everyone who supported the event even though they unfortunately couldn’t attend.)
+Share the video link (link is private).
+
+<https://www.youtube.com/watch?v=8D_TwU2YiIA>
+<https://www.youtube.com/watch?v=womFZuKP9Pg> (Planned release version (above + version with oral presenter’s slides added)))
+
+I’m thinking of releasing the link to connpass sometime next week.
+If there is someone who doesn’t want the video to be published on connpass, please put a :scream: stamp on it!","この編集画面で，asigneeを決定するのかと思ったのですが，歯車マークがなくてどうしたらいいかわからなくなってしまっています．
+<https://docs.github.com/ja/issues/tracking-your-work-with-issues/assigning-issues-and-pull-requests-to-other-github-users>",,,,<@U05CFMXEWDQ>さんがチャンネルに参加しました,english welcome!,,,↑上記少し修正しました。,,,
+"はい、clusteringへの変更はそちらになります。
+ただ、デフォルトではパット変えられるようにはなってなかったと思うので（未検証です）、変更する場合はそこそこ本格的に取り組む必要がありそうです。",,,,,対応ありがとうございました！,"参考までにですが、gpu driver周りは適用が再起動後になるので、rebootで解決することもあります。
+
+また、他にやるとしたら今回はdockerの問題の部分を試して見てほしいです。
+```Rvizの画面が黒くなったときの原因の追求方法とその解決方法をおしえてください。
+
+ChatGPT
+Rviz（Robotics Visualization）はROS（Robot Operating System）に含まれる3D可視化ツールで、ロボットのセンサーデータをリアルタイムで表示できる機能を持っています。Rvizの画面が黒くなる原因はいくつかありますが、以下に一般的な問題とその解決策を示します。
+
+グラフィックスドライバの問題： これは特に新しいマシンや新しいOSでよく見られます。RvizはOpenGLを使用して3D描画を行うので、適切なグラフィックスドライバがインストールされていないと問題が起こることがあります。これを解決するには、システムのグラフィックスドライバを更新するか、もしくは必要ならば適切なドライバをインストールする必要があります。
+
+Rvizの設定問題： Rvizの設定が間違っているか、あるいは不完全な場合、画面が黒く表示されることがあります。例えば、表示したいフレームが設定されていない場合や、フレームが存在しない場合などです。これを解決するには、Rvizの設定を見直し、必要なフレームやデータが正しく設定されていることを確認します。
+
+センサーデータの問題： Rvizが表示しようとしているデータが存在しない、またはデータが不完全であると、画面が黒く表示されることがあります。これを解決するには、Rvizが接続しているセンサーが正しく動作しているか、またはデータが正しく送信されているかを確認します。
+
+ROSの通信問題： Rvizと他のROSノード間の通信がうまくいっていない場合、Rvizは適切なデータを取得できず、結果として画面が黒く表示されることがあります。これを解決するには、ROSのネットワーク設定を確認し、Rvizと他のROSノードが適切に通信できていることを確認します。
+
+以上の一般的な解決策を試しても問題が解決しない場合は、Rvizのエラーログを確認して具体的なエラーメッセージを探し、そのエラーメッセージをキーワードにしてインターネットで検索すると、より具体的な解決策を見つけ
+
+Finished browsing
+Rvizの黒い画面の問題について、ROS AnswersやGitHubのスレッドで提案されている解決策は以下の通りです。
+
+仮想環境上での問題： 仮想環境上でROSを動かしているとき、特にVMwareの仮想グラフィックカードがRvizと適合しないことが原因となることがあります【8†source】。
+
+OGRE_RTT_MODEパラメータの変更： OGRE_RTT_MODEパラメータを""PBuffer""以外の何かに変更すると問題が解決するかもしれません。また、Rvizを起動する前に ~/.rviz ディレクトリを削除することも時々助けになるとの報告があります【9†source】【10†source】。
+
+OpenGLの問題： OpenGLのバージョンに問題がある可能性もあります。異なるバージョンのOpenGLが使用されている場合、画面が黒くなる問題が発生することがあります【16†source】。
+
+Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。
+
+Ubuntuのバージョン： Ubuntuのバージョン間での問題もあるかもしれません。特にUbuntu 22.04ではglxgearsの実行に失敗する報告がありますが、Ubuntu 20.04では問題が発生しないとの報告があります【18†source】。
+
+環境変数の追加： 環境変数にMESA_GL_VERSION_OVERRIDE=3.1COMPATとMESA_GLES_VERSION_OVERRIDE=3.1を追加すると、OpenGLのバージョンを合わせることができるかもしれません【19†source】。
+
+バージョンのダウングレード： 特定のバージョン（ここではhumble-20230129T1423）にダウングレードすることで問題が解決する場合があります【21†source】。
+
+これらの解決策を試す際には、システムの設定や使用しているハードウェア、ソフトウェアのバージョンによって結果が異なる可能性があることをご了承ください。また、問題が解決しない場合や、それ以上の支援が必要な場合は、ROSのコミュニティRvizの黒い画面の問題について、ROS AnswersやGitHubのスレッドで提案されている解決策は以下の通りです。
+
+仮想環境上での問題： 仮想環境上でROSを動かしているとき、特にVMwareの仮想グラフィックカードがRvizと適合しないことが原因となることがあります【8†source】。
+
+OGRE_RTT_MODEパラメータの変更： OGRE_RTT_MODEパラメータを""PBuffer""以外の何かに変更すると問題が解決するかもしれません。また、Rvizを起動する前に ~/.rviz ディレクトリを削除することも時々助けになるとの報告があります【9†source】【10†source】。
+
+OpenGLの問題： OpenGLのバージョンに問題がある可能性もあります。異なるバージョンのOpenGLが使用されている場合、画面が黒くなる問題が発生することがあります【16†source】。
+
+Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。
+
+Ubuntuのバージョン： Ubuntuのバージョン間での問題もあるかもしれません。特にUbuntu 22.04ではglxgearsの実行に失敗する報告がありますが、Ubuntu 20.04では問題が発生しないとの報告があります【18†source】。
+
+環境変数の追加： 環境変数にMESA_GL_VERSION_OVERRIDE=3.1COMPATとMESA_GLES_VERSION_OVERRIDE=3.1を追加すると、OpenGLのバージョンを合わせることができるかもしれません【19†source】。
+
+バージョンのダウングレード： 特定のバージョン（ここではhumble-20230129T1423）にダウングレードすることで問題が解決する場合があります【21†source】。
+
+これらの解決策を試す際には、システムの設定や使用しているハードウェア、ソフトウェアのバージョンによって結果が異なる可能性があることをご了承ください。また、問題が解決しない場合や、それ以上の支援が必要な場合は、ROSのコミュニティRvizの黒い画面の問題について、ROS AnswersやGitHubのスレッドで提案されている解決策は以下の通りです。
+
+仮想環境上での問題： 仮想環境上でROSを動かしているとき、特にVMwareの仮想グラフィックカードがRvizと適合しないことが原因となることがあります【8†source】。
+
+OGRE_RTT_MODEパラメータの変更： OGRE_RTT_MODEパラメータを""PBuffer""以外の何かに変更すると問題が解決するかもしれません。また、Rvizを起動する前に ~/.rviz ディレクトリを削除することも時々助けになるとの報告があります【9†source】【10†source】。
+
+OpenGLの問題： OpenGLのバージョンに問題がある可能性もあります。異なるバージョンのOpenGLが使用されている場合、画面が黒くなる問題が発生することがあります【16†source】。
+
+Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。
+
+Ubuntuのバージョン： Ubuntuのバージョン間での問題もあるかもしれません。特にUbuntu 22.04ではglxgearsの実行に失敗する報告がありますが、Ubuntu 20.04では問題が発生しないとの報告があります【18†source】。
+
+環境変数の追加： 環境変数にMESA_GL_VERSION_OVERRIDE=3.1COMPATとMESA_GLES_VERSION_OVERRIDE=3.1を追加すると、OpenGLのバージョンを合わせることができるかもしれません【19†source】。
+
+バージョンのダウングレード： 特定のバージョン（ここではhumble-20230129T1423）にダウングレードすることで問題が解決する場合があります【21†source】。
+
+これらの解決策を試す際には、システムの設定や使用しているハードウェア、ソフトウェアのバージョンによって結果が異なる可能性があることをご了承ください。また、問題が解決しない場合や、それ以上の支援が必要な場合は、ROSのコミュニティRvizの黒い画面の問題について、ROS AnswersやGitHubのスレッドで提案されている解決策は以下の通りです。
+
+仮想環境上での問題： 仮想環境上でROSを動かしているとき、特にVMwareの仮想グラフィックカードがRvizと適合しないことが原因となることがあります【8†source】。
+
+OGRE_RTT_MODEパラメータの変更： OGRE_RTT_MODEパラメータを""PBuffer""以外の何かに変更すると問題が解決するかもしれません。また、Rvizを起動する前に ~/.rviz ディレクトリを削除することも時々助けになるとの報告があります【9†source】【10†source】。
+
+OpenGLの問題： OpenGLのバージョンに問題がある可能性もあります。異なるバージョンのOpenGLが使用されている場合、画面が黒くなる問題が発生することがあります【16†source】。
+
+Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。
+
+Ubuntuのバージョン： Ubuntuのバージョン間での問題もあるかもしれません。特にUbuntu 22.04ではglxgearsの実行に失敗する報告がありますが、Ubuntu 20.04では問題が発生しないとの報告があります【18†source】。
+
+環境変数の追加： 環境変数にMESA_GL_VERSION_OVERRIDE=3.1COMPATとMESA_GLES_VERSION_OVERRIDE=3.1を追加すると、OpenGLのバージョンを合わせることができるかもしれません【19†source】。
+
+バージョンのダウングレード： 特定のバージョン（ここではhumble-20230129T1423）にダウングレードすることで問題が解決する場合があります【21†source】。
+
+これらの解決策を試す際には、システムの設定や使用しているハードウェア、ソフトウェアのバージョンによって結果が異なる可能性があることをご了承ください。また、問題が解決しない場合や、それ以上の支援が必要な場合は、ROSのコミュニティRvizの黒い画面の問題について、ROS AnswersやGitHubのスレッドで提案されている解決策は以下の通りです。
+
+仮想環境上での問題： 仮想環境上でROSを動かしているとき、特にVMwareの仮想グラフィックカードがRvizと適合しないことが原因となることがあります【8†source】。
+
+OGRE_RTT_MODEパラメータの変更： OGRE_RTT_MODEパラメータを""PBuffer""以外の何かに変更すると問題が解決するかもしれません。また、Rvizを起動する前に ~/.rviz ディレクトリを削除することも時々助けになるとの報告があります【9†source】【10†source】。
+
+OpenGLの問題： OpenGLのバージョンに問題がある可能性もあります。異なるバージョンのOpenGLが使用されている場合、画面が黒くなる問題が発生することがあります【16†source】。
+
+Dockerの設定： Dockerを使用している場合、実行コマンドに ---ipc=host を追加するか、docker-composeファイルに ipc: host を追加すると問題が解決するかもしれません【17†source】。
+
+Ubuntuのバージョン： Ubuntuのバージョン間での問題もあるかもしれま```",,,,,,"<@U05HA0RLT7S> さん
+コメント超嬉しいです！聞き専でも参加OKです！
+（個人的には仕事が忙しい中参加するだけでも意義があると感じているので、1分だけでもチーム紹介あるともちろん嬉しいです、が無理にするものでもなさそうです。
+参加時に感じるハードルを言語化できると運営の方に喜ばれそう、、（あとザ混沌の由来とか、、））",,,,,,,"<@U05CJ0M1A05>
+&gt; 狙い通りのチューニングができているのか判断するのが悩ましいですね。
+behavior とmotionのどちらも回避をするとルールベースの回避に最適化が加わるので異なる動作をすることが多いですね。
+autowareでは回避経路に対して交通ルールに従った動作をさせることが多いので、planningの最初の段階で回避経路を出していますが、逆にplanningのモジュールでは回避せずにcotrolのモジュールで回避するような制御入力を入れるカスタムパッケージを作成することも可能です。",,,,,ありがとうございました！岐阜のいいところを知ることができました！,"no assigneeをクリックするとアサインの選択画面が出てくるかと思います！
+
+難しければ、一旦アサインなしのままでも大丈夫ですよ",,,,<@U05C18Q5NHM>さんがチャンネルに参加しました,,,,,,,

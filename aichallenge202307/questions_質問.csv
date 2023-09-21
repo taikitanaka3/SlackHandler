@@ -1,0 +1,817 @@
+2023-07-21,2023-07-25,2023-08-11,2023-08-08,canvas_in_the_conversation,2023-08-28,2023-08-17,2023-06-24,2023-08-24,2023-07-20,2023-08-20,2023-06-22,2023-08-23,2023-08-27,2023-08-13,2023-08-19,2023-07-23,2023-08-26,2023-08-31,2023-06-25,2023-07-24,2023-08-14,2023-08-25,2023-07-18,2023-07-29,2023-07-19,2023-06-15,2023-08-16,2023-08-21,2023-07-10,2023-08-06,2023-08-29,2023-07-31,2023-07-26,2023-08-04,2023-06-26,2023-07-06,2023-07-30,2023-08-09,2023-08-02,2023-09-04,2023-08-18,2023-09-15,2023-07-28,2023-08-07,2023-08-05,2023-09-11,2023-08-03,2023-06-14,2023-09-13,2023-08-15,2023-08-22,2023-07-11,2023-08-30,2023-08-01
+"I have been trying to run Autoware-Mini with reference to the following URL, but the golf cart does not move although the simulation starts up. I wonder if everyone is able to get it to work.
+The picture shows the current state of my RViz.
+<https://qiita.com/h_bog/items/075543f30f9b3432fa1d>
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html>","<@U05FH8SD2GM>
+こちらは競技に必要な変更のみを加えていただくためにこのような構成にしています。
+このパッケージに変更を加えたい場合はドキュメンテーションにある通りパッケージ名を変更し、launchファイルを書き換える必要があります。
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html#how-to-customize-and-use-autoware-packages>
+
+なぜこのような構成になっているのかというと、autowareには全部で200以上のパッケージが存在し、
+その中でもコードベースで変更する必要があるパッケージはごく一部のためです。
+また、実際に使用されているautowareのコードは`/autoware`にあります。","<@U05CCP5L7D3>
+Hello, regarding the ranking of the preliminary competition (<https://aichallenge.synesthesias.jp/>), why are there two lists for society and students?","<@U05CFHNAZ8B>
+ご連絡ありがとうございます。承知いたしました。
+また、手順ご教示頂いたにも関わらず、反応が遅れ申し訳ありません。
+確認後、結果を共有いたします。",,"<@U05CFHNAZ8B> sorry, i did not make any change As far as I remember",上記明日開発者に確認してみます。,"<@U05CJ4Q0536> Thank you, Rocker is working now.",My portal login email as expired. Somehow that mail didnt show in my inbox. How do i request the mail again? How to login through the username and activate my account?,<@U05HHL9M74K> Good to hear that. Thank you for letting us know!,"Hello! We are team I.D.E.A. , we did not receive a mail regarding the online testing environment as mentioned in the slack update. Kindly guide us. Thank you","team- while running below rocker command.i get a error saying
+ cd aichallenge2023-sim
+ rocker --nvidia --x11 --user --net host --privileged --volume autoware:/aichallenge -- <http://ghcr.io/automotiveaichallenge/aichallenge2023-sim/|ghcr.io/automotiveaichallenge/aichallenge2023-sim/> autoware-universe-cuda:v1
+
+Error: command : rocker not found
+Even in installed rocker using the Python. can you please help","<@U05CLQJCULB>
+&gt; adding temporary target points to the route
+yes if it is not pre-defined target I think it's ok.","We have few questions regarding penalties,
+
+1. How to check the penalties that are added to final scores in results.json? We couldn't understand the score that we got. It is difficult for us to debug the penalties we got.
+2. Can you please list the all available penalties that are possible? I feel the English translation of the aichallenge2023-sim documentation is not clear.
+3. Example, In the 3rd task there are no cardboard boxes in the path. Rather only traffic cones are available. But the Rule document says cardboard box in task 3. 
+Please help us in understanding the penalties and scoring concept.","かなり膨大な時間をかけて実行できない原因調査をしていました。
+エラー表示のためにautowareのdocker内での再buildを何度もやりました。(一回2時間程度要する)
+いろいろ試して分かった事ですが、そもそもautowareの開発環境に問題がありそうな気がしてきました。
+autoware/amd64.envに記載の環境は以下の通りです。
+```rosdistro=humble
+rmw_implementation=rmw_cyclonedds_cpp
+base_image=ubuntu:22.04
+cuda_base_image=ubuntu:22.04
+prebuilt_base_image=ubuntu:22.04
+cuda_version=11.6
+cudnn_version=8.4.1.50-1+cuda11.6
+tensorrt_version=8.4.2-1+cuda11.6```
+Ubuntu22.04でサポートされているcudaは11.7なのに11.6が指定されている。
+cudnn8.4はUbuntu22.04非対応
+tensorrt8.4はubuntu22.04非対応
+と公式の開発環境に問題がありそうでした。いろいろと試してみましたが、cudaのversionを上げるとAWSIMがcore dumpで終了してしまい実行できませんでした。
+おそらく、現状のコンテスト環境はかなり限定された環境でしか実行できないようになっている可能性があります。
+AWSやGCPなど再現性のある環境での実行環境確認はサポートいただけないでしょうか？","一応こちらのスレッドで議論されていたようです。
+<https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691225919536809|https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691225919536809>
+ローカル環境で試した後に、オンライン環境でZipファイルをアップしたところ上手く行きました。
+お手数おかけ致しました。","SetUpの手順のAutowareの項にて最後のros2 launchコマンドを実行したところ、Rviz2は起動されたものの、下記のように右のウィンドウが真っ黒になってしまいます。
+何が原因かわかりますでしょうか？
+なお、AWSのg4dn.2xlargeインスタンスのUbuntu 22.0にて実行しております。","途中でパラメータを変更したいのですが，やり方についてアドバイスを頂けませんでしょうか．
+
+ros2 set paramでパラメータを変えてみたのですが，Planningに反映されてなさそうでした．
+そのため，現在は別のパラメータを設定した2つのパブリッシャを起動しておいて，サブスクライバ側で受け取るトピックを選ぶ形にしようと思って作業しています．
+これ以外に考えられる方法についてアドバイスをいただけませんでしょうか．
+よろしくお願いします．
+（ノードを途中で起動したり，削除したりというやり方も考えたのですが，調べたところROS2では難しい？ようでした）",thank you.,"<@U05CJ88GTT6> <@U05CCP5L7D3>
+documentに以下追加しました。
+• docker imageの確認方法
+• ./ formatの統一
+• multicast onの設定
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/12>","have you put the map folder in your workspace? the .pcd and .osm file.
+
+Seem it cannot locate your map","<@U05CFHNAZ8B>
+確認ありがとうございました。前掲のエラーログからだけだと、どの設定に問題があるのか、どんな追加設定が必要になるのかを見つける手がかりにはならなそうですね。
+下記手順にてautoware miniには切り替わりましたが、同様の事象が起きております。
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html>
+なかなか調査する時間が取れておりませんが、何か進展ありましたら共有いたします。","<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1692626756859019|https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1692626756859019>
+
+<@U05FDLCUYG6> 
+
+
+Please take the actions listed here.",Can you guys provide all the material in English also?,"Autowareで実際の自動運転車の制御にルックアップテーブルを使う方法が書いてありました．
+<https://autowarefoundation.github.io/autoware.universe/main/vehicle/accel_brake_map_calibrator/accel_brake_map_calibrator/|accel_map>については説明があったのですが，<https://github.com/autowarefoundation/autoware.universe/blob/main/vehicle/raw_vehicle_cmd_converter/data/default/steer_map.csv|steer_map>には説明がないようです（縦軸はステアリング角度ぽいなと思いました）．
+steer_mapの縦軸と横軸と表の値は何を表しているか教えていただけますでしょうか．
+今回の競技自体には関係ないのですが，もし可能でしたらよろしくお願いします．","<@U05J7EYA8QG> cc <@U05CFHNAZ8B>
+Thank you for the question.
+Of course we can.
+As Tanaka-san says, in our current understanding, we actually provide all materials also in English, but could you let us know which material especially is not provided in English?
+If exists, we will provide the English version.","最低限のスペック〜オーバースペックのものまでのグラフィックボード（GPU）一覧を展開します
+基本はVRAM8GB以上あれば問題ないです。","回避動作が生成されなくなる件に関して１点質問させてください。
+本件の回避策の１つはトピックが生成されるまでwaitするとの事ですが、こちらはオンラインジャッジ評価時にも考慮する必要があるでしょうか。
+具体的には、例えば以下のような1min程のsleepを起動時に（self_driving_controller.cppなどに）設定するなど必要があるでしょうか。
+オンラインジャッジと手元動作の差分に繋がりそうなので質問させていただきました。
+もしご存知の方おられましたら伺いたいですm(..)mﾍﾟｺ
+&gt; <https://t.co/2rwdDRCHtw>","<@U05HWCTRFMX>
+大変おまたせいたしました。
+先程、再発行メールをお送りいたしました。
+ご確認お願いいたします。","<!channel>
+環境構築で苦戦している方は<https://qiita.com/h_bog/items/4ed94ef6256ac5ae9c03|こちらの記事>が参考になるかもしれません。
+ーーー
+For those of you struggling with environment setup, this article might be helpful.","ありがとうございます．私も確認してみたところtfにチェックが元々入ってなくて，入れるとSinosinoさんと同じようなWarnが出てきます．
+node_graphはrqt_graphで表示されましたか？（node graphの表示の仕方がわからず教えていただけるとありがたいです）","<@U05CLQJCULB>
+I'll check it in the online environment.","I have already used the latest version of AWSIM.
+Let me add to my current situation: I am not using the lane_planner module and have developed my own planning module. However, I believe that AWSIM is not executing control actions based on the control commands because the control commands are normal. There seems to be no connection between the control commands and the planning module in AWSIM.
+<@U05CFHNAZ8B>
+
+
+The problem I am currently encountering is when the control command /control/command/control_cmd is in the following format.
+It seems that AWSIM is not executing the corresponding actions despite receiving the control command.
+
+stamp:
+  sec: 1864
+  nanosec: 449958326
+lateral:
+  stamp:
+    sec: 0
+    nanosec: 0
+  steering_tire_angle: -0.13089969754219055
+  steering_tire_rotation_rate: 0.0
+longitudinal:
+  stamp:
+    sec: 0
+    nanosec: 0
+  speed: 0.5555555820465088
+  acceleration: 0.28626710176467896
+  jerk: 0.0","経路生成に関して質問があります。
+Autoware-miniのlaunch fileには ""mission planner"", ""behavior path planner"", ""motion planner""の3つがあると思うのですが、それぞれの役割は以下の認識であっておりますでしょうか？
+• Mission Planner: 現在地から目的地まで、地図情報だけをもとに（障害物を無視して）経路を生成する（=global planner）
+• Behavior Path Planner: 障害物や信号等の情報を加味した経路を生成する（=local planner）
+• Motion Planner: 最終的に車両が追従するべき経路を生成する？
+いまいちMotion Plannerについて理解できていないので、ご教授いただけますと幸いです。
+よろしくお願いいたします。","<@U05HHLB1L67> <@U05CFHNAZ8B>
+返信ありがとうございます．
+回避動作を生成することができました！
+
+今までできなかった理由についてなのですが，おそらく<https://twitter.com/s01265994/status/1685505421103243264|こちらのツイート>と同じようなものの気がします．
+このツイートは，回避動作が発生されなくて困っているときに知って，ros2 topic listをしたときに/perception/object_recognition/detection/centerpoint/objectsが表示されなかったので，これが原因なのだろうと思いつつどうしたら解決するのかわからず放置していました．
+
+しかし今回成功したときは，topic listにcenterpoint/objectsが表示されました．10回以上連続で失敗して，なぜ今回成功したのかはわかりません．","using the following during autoware and AWSIM launch, now simulator is working and Rviz is opening
+
+```if [ ! -e /tmp/cycloneDDS_configured ]; then
+    sudo sysctl -w net.core.rmem_max=2147483647
+    sudo ip link set lo multicast on
+    touch /tmp/cycloneDDS_configured
+fi```
+",I have a very basic and generic question. How to approach the solution for the competition?  Is it just by changing the parameters ? or do we need to extract data from the Simulator and create a Ai model and create a new package that uses this model to send the control commands? And can the participants add new sensors to the car and use the fusion data? is it possible as these things are not given in the rule site.,"<@U05GYV37RCH> thank you for reply. sorry for late , i think i got the map file in `/autoware_challenge_2023/aichallenge2023-sim/docker/aichallenge/AWSIM/AWSIM_Data/StreamingAssets/kashiwanoha2023_integ`  i see one osm file and one pcd file. my question is, where should I place them inside the workspace  ?","<@U05CLQJCULB>
+Sorry for inconvenience. I will check this.","Autowareを色々いじっているうちに一切回避動作が生成されなくなってしまいました．
+以下のurlの*Dockerイメージの準備・起動 〜 Autowareの準備*からやり直して，手動で初期位置とゴール位置を設定したのですが，やはり回避動作は生成されませんでした．
+（docker~ROS2の再インストールはまだやっていないです．）
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/setup/index.html#docker%E3%81%AE%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99>
+
+同じような現象になったり，確認した方がよさそうなこと等あれば教えていただけるとありがたいです．よろしくお願いします．","<@U05CFHNAZ8B>
+disscusionで質問してみたのですが回答が付かないので、もう少しこういう聞き方をした方が良いなどのアドバイスがあればいただきたいです。
+よろしくお願いいたします。
+<https://github.com/orgs/autowarefoundation/discussions/3785>
+<https://github.com/orgs/autowarefoundation/discussions/3784>","<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1692343692003809|https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1692343692003809>
+
+こちらに案内を出させていただきました．
+お時間をちょうだいしており，申し訳ありません．
+もうしばらくお待ちください．
+",PCが届いたのですが、現時点では使用に関する情報が特にアナウンスされていないと思うので、開封せずに保管しておけば大丈夫でしょうか。,"<@U05CFHNAZ8B> <@U05D22FQDBP>
+確認が遅くなりました。
+頂いた情報のおかげで解決できました。
+（DockerFileを下記に変えて`bash build.sh`でdockerイメージ再作成しました）
+ありがとうございます！！大変助かりました。
+```FROM <http://ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1|ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1>
+
+RUN rm -rf /autoware/install/tier4_*_launch
+
+RUN apt update &amp;&amp; \
+    apt install -y software-properties-common &amp;&amp; \
+    add-apt-repository -y ppa:kisak/kisak-mesa &amp;&amp; \
+    apt upgrade -y
+
+ENV ROS_LOCALHOST_ONLY 1
+ENV RMW_IMPLEMENTATION rmw_cyclonedds_cpp
+ENV export RCUTILS_COLORIZED_OUTPUT 1```","`ROS_LOCALHOST_ONLY=0` ですが、おそらくPC2台を使用している時だけ影響がある設定にみえます。私の環境で`ROS_LOCALHOST_ONLY=0` を実行してみましたが、Autoware実行でTF treeが完成していない状況は同じでした。他のtopicは見えているので`ROS_LOCALHOST_ONLY=0` の設定は私の環境では関係なさそうでした。
+引き続きよろしくお願いします。","自分たちのチームも同じようなことが原因でうまく行っていなかったようです！
+<@U05FH8SD2GM><@U05CFHNAZ8B> ありがとうございます！",決勝では1チームあたり何回チャレンジできるのでしょうか。,"<@U05CFHNAZ8B> 確認なのですが，Aiチャレンジのリポジトリにあるコードをそのまま動かすと，回避行動はとられますでしょうか．
+よろしくお願いします．",<@U05C14GC97Z>さんがチャンネルに参加しました,"<@U05CFHNAZ8B>さま　事務局の皆様
+
+決勝の予定スケジュールを概要（１２日の集合・解散時間だけでも）でいいので教えていただけませんでしょうか。
+遠方からの参戦になるため、前泊・後泊・有給取得など旅程の早期決定に役立てたいためです。
+
+早割効く間に移動手段予約するだけでも費用的に助かります。","obstacle_avoidance_plannerの104行目以降のavoidance内のパラメータ（max_avoidance_costなど）に関しての説明はドキュメントにありますでしょうか．
+Documentationの検索欄で探しているのですが，見つからなかったので質問しました．",Is this problem due to lanelet? Any place to debug this?,"Hello People, We have a doubt, What does this point exactly means?
+• *The placement of the vehicles may be somewhat random.*
+Does it spawn randomly? or it means very slight deviation from its default starting point?","ありがとうございます。
+確認中ではあるのですが、手元でビルドエラー等は起こっているようにはみえず、同じ原因（手動でライブラリ追加したい場合はパッケージにdependの追加が必要）ではないのかもしれません。
+今回自作plannerを追加しようと試みています、この場合は1.plannerのコードをaichallenge_submit以下に追加、2.ビルド対象にする、3.launchファイルにlaunchする旨を追記、だと思っているのですが他に何かお気づきの点あれば伺いたいです。手元でも確認いたします！
+<@U05CCP5L7D3>san
+<@U05CFHNAZ8B> san","I use the following command to record the topic record of AWSIM .
+`ros2 bag record -o bagfile2 /control/command/control_cmd /control/command/emergency_cmd /control/command/gear_cmd /control/command/hazard_lights_cmd /control/command/turn_indicators_cmd`
+The rosbag data file is shown in the attachment.
+
+I only open AWSIM, and then use `ros2 bag play bagfile` to test whether AWSIM executes control commands normally.
+When the time is around 300s, the control command is executed normally, but AWSIM does not execute the corresponding control action.
+Is it convenient for you to use my rosbag file for testing? <@U05CFHNAZ8B>"
+"<@U05FH8SD2GM>
+こちらドキュメンテーション通りにやるにはgit checkout mainをする必要がありそうです。
+git checkout feat/mini_autoware -&gt; mainこちらで試してみてください。",理解できました．ありがとうございます！,,"<@U05CFHNAZ8B>
+When testing with the online environment (<https://aichallenge.synesthesias.jp/>), we encountered two problems.
+The first one is why the result we submitted at 2023-08-07 10:29 was not updated to the provisional standings. I think this result should be the best result in the history of my team, but it has not been updated to the provisional standings.
+The second one, the two submissions I submitted at 2023-08-08 20:38 and 2023-08-08 18:20 both showed no results. Do you know the possible reason?",,"<@U05HHL9M74K>
+Sorry it is quite hard to tell what is wrong with.
+Could you find out similar problems in this slack thread, issues , FAQ?","<@U05CFHNAZ8B> If I can enter the finals, which version of the code will be used in the finals? After the results of the preliminary competition are announced, if I enter the final round, can I still change the code?","when using this command in rocker container
+```ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sensor_model:=awsim_sensor_kit map_path:=/aichallenge/mapfile```
+the following error occurred and RVIz is not opening
+[ERROR] [rviz2-70]: process has died [pid 435, exit code -6, cmd '/opt/ros/humble/lib/rviz2/rviz2 -d /aichallenge/aichallenge_ws/install/autoware_launch/share/autoware_launch/rviz/autoware.rviz -s /aichallenge/aichallenge_ws/install/autoware_launch/share/autoware_launch/rviz/image/autoware.png --ros-args -r __node:=rviz2 -p use_sim_time:=True -p wheel_radius:=0.255 -p wheel_width:=0.196 -p wheel_base:=2.14 -p wheel_tread:=0.975 -p front_overhang:=0.467 -p rear_overhang:=0.51 -p left_overhang:=0.145 -p right_overhang:=0.145 -p vehicle_height:=2.2 -p max_steer_angle:=0.64'].",ありがとうございます。元々のAutowareのlaunchファイルの記述を参考にしてトピック名やパラメータファイルのパスを設定すれば良さそうだということは理解しました。その他にlaunchファイルの書き方についてドキュメントなどはありますでしょうか？,"<@U05J7EYA8QG> cc <@U05CFHNAZ8B>
+Thank you for letting us know.
+We are sorry for the inconvenience.  ~We will immediately add English as well.~
+&lt;added after edition&gt;*We will discuss internally how to solve this problem and announce you later*
+~<@U05CFHNAZ8B>~
+~It seems actually some of your posts are only in Japanese, so could you add English also?~
+~Plus, we'd better to repeat Japanese questions posted by participants in English so that non-Japanese people can also understand both of the questions and answers.~",cc: <@U05CCP5L7D3>,"I had a similar problem, but I think I was able to solve it by adding ""sudo"" in front.
+Could you see if that might work?","Thanks for sharing <@U05CJ4Q0536>, but when we click the documentation it takes to the main branch documentation. Can you share the link that takes to the AWSIM-stable branch's documentation?",hello <@U05CFHNAZ8B> can you reset my temporary password in the online submission platform? I could not work on it in recent days due to my work schedule.,"また、rockerの実行の際にnetwork=hostやpreriveragedのオプションが指定されており、dockerを使用しているにも関わらずhost環境に依存する実行環境となっています。
+さまざまな実行環境があるコンテストでは再現船が乏しいと思われます。
+network=hostやpreriveragedのオプション無しで実行できる環境を提供頂けないでしょうか？",,"hello, is the competition repository available? I understand that the repository should be available from early july","lanelet2のHADMapBin型についてお聞きしたいです。
+HADMapBinはどのような形式で数字が羅列されているのでしょうか？
+また解説などがされている資料などはあるのでしょうか？",Is it possible to extend the time as we have put our code in the online environment for the past 40 minutes there is no update and we don't have time to put in another upload as we need to put in one more upload. Please consider,,"<@U05CFHNAZ8B> <@U05D22FQDBP>
+情報ありがとうございます。確認してみます。(結果も書きます)
+時間が取れず、確認が遅くなるかも知れません。申し訳ありません。",,Thank a lot. :+1:,"We have provided all the material in English.
+Do you have any material which is not in English?",,"<@U05HHL9M74K> cc <@U05CFHNAZ8B>
+Thank you for the question. If the problem is not solved yet, please freely let us know.",,"<@U05GL605DT5> 
+routeはtrancient localで送られているはずなので、遅延は問題ないかと思います。
+自作ノードなどでvolatileのqosで送っているtopicがあれば気をつけたほうがいいです。","確認できました。
+ありがとうございます。",,"Node graphはデフォルトではinstalされていなかったため以下のコマンドで入れています。
+```apt install -y ros-humble-desktop-full ros-humble-rqt-*```
+その後、`rqt`を実行しPlugin&gt;Inspection&gt;Node graphを選択するとみられます。","<@U05CLQJCULB> cc: <@U05CFHNAZ8B>
+Sorry, that was a bug in the online environment. I will update the environment.",とても丁寧にありがとうございます．理解できました！:man-bowing:,"<@U05CLU6NX8A> 
+behavior plannerでは主にODD3以上のいわゆる一般道での走行を行うのに必要な機能（一時停止線、横断歩道、信号停止）など破ってはいけない交通ルールを加味したplanningを行うものとなっています。
+それ故回避機能もルールベースの回避で最適化を行っていません。
+一方でmotionはODD2以下のいわゆる限定区域や限定空間での走行を実現するもので、例えば信号や、地図の情報等といった情報を扱うものはありません。
+障害物の回避や、停止、速度の最適化など、通常走行に必要な機能を担うものとなっています。
+
+behaviorとmotionでは達成したい事柄が異なるため、それぞれ分けていますが、autowareのアーキテクチャを遵守するのであれば、今回の大会はbehaviorはすべてskipして、motionのみの改良とするのが良いかと思います。","今のレポジトリの状態は添付画像です．
+git pullして，田中さんに指摘していただいたパラメータをブログ通りに変更したのみです．","<@U05CFHNAZ8B> thank you, now AWSIM and Autoware in Rviz is working","<@U05FDLCUYG6>
+It's completely free to customize for your own package to develop control control module.
+We provide just a reference
+we will provide a brief intro maybe at next week how to customize autoware for your own needs.
+
+here is a concept
+
+AWSIM &lt;-&gt; autoware is connected with control commands so
+
+# replacing existing package
+1. remap control command out put from autoware or replace package name to your own package. here is an example of part you need to change 
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/launch/components/tier4_control_component.launch.xml|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aich[…]are_launch/launch/components/tier4_control_component.launch.xml>
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_universe_launch/tier4_control_launch/launch/control.launch.py|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aich[…]e_universe_launch/tier4_control_launch/launch/control.launch.py>
+2. copy and replace package name to your own package(recommended this action because interface should be kept same to avoid bug)
+fpr example you replace this package to ""mpc_customized"" package. please see <https://automotiveaichallenge.github.io/aichallenge2023-sim/en/local/index.html#how-to-customize-and-use-autoware-packages>
+<https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/control/mpc_lateral_controller>
+---
+or if you are expert
+# remove package and add new interface
+<https://app.diagrams.net/?lightbox=1#Uhttps%3A%2F%2Fautowarefoundation.github.io%2Fautoware-documentation%2Fmain%2Fdesign%2Fautoware-architecture%2Fnode-diagram%2Foverall-node-diagram-autoware-universe.drawio.svg|https://app.diagrams.net/?lightbox=1#Uhttps%3A%2F%2Fautowarefoundation.github.io%2Fautoware[…]am%2Foverall-node-diagram-autoware-universe.drawio.svg>
+1. you can remove any interface in this diagram and add completely new architecture packages.
+2. make sure your package with autoware outputs following topics 
+```/control/command/control_cmd
+/control/command/emergency_cmd
+/control/command/gear_cmd
+/control/command/hazard_lights_cmd
+/control/command/turn_indicators_cmd```
+ーーーchat gptでの日本語訳ーーー
+
+あなたのパッケージを自由にカスタマイズしてコントロールモジュールを開発することができます。次の週にはAutowareを自分のニーズに合わせてカスタマイズする方法についての簡単な紹介を提供する予定です。
+以下に概念を示します。
+AWSIMとAutowareは制御コマンドで接続されています。
+既存のパッケージを置き換える
+Autowareからの制御コマンド出力をリマップするか、パッケージ名を自分のパッケージに置き換えます。以下に変更する部分の例を示します。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/launch/components/tier4_control_component.launch.xml>
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_universe_launch/tier4_control_launch/launch/control.launch.py>
+1. パッケージ名を自分のパッケージにコピーして置き換えます（このアクションを推奨します。インターフェースはバグを避けるために同じままにしておく必要があります）
+2. たとえば、このパッケージを ""mpc_customized"" パッケージに置き換えます。詳細は<https://automotiveaichallenge.github.io/aichallenge2023-sim/en/local/index.html#how-to-customize-and-use-autoware-packages> をご覧ください。
+3. <https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/control/mpc_lateral_controller>
+あるいは、もしあなたがエキスパートならば
+パッケージを削除し、新しいインターフェースを追加する
+<https://app.diagrams.net/?lightbox=1#Uhttps%3A%2F%2Fautowarefoundation.github.io%2Fautoware-documentation%2Fmain%2Fdesign%2Fautoware-architecture%2Fnode-diagram%2Foverall-node-diagram-autoware-universe.drawio.svg>
+この図にある任意のインターフェースを削除し、完全に新しいアーキテクチャパッケージを追加することができます。
+あなたのパッケージがAutowareとともに次のトピックを出力することを確認してください。
+/control/command/control_cmd
+/control/command/emergency_cmd
+/control/command/gear_cmd
+/control/command/hazard_lights_cmd
+/control/command/turn_indicators_cmd","<@U05HHL9M74K> <https://automotiveaichallenge.github.io/aichallenge2023-sim/en/setup/index.html>. You might find more detail in this guide
+```aichallenge2023-sim
+└ docker
+ └ aichallenge
+  └ mapfile
+   ├ .gitkeep
+   ├ lanelet2_map.osm
+   └ pointcloud_map.pcd```","<@U05CLQJCULB>
+&gt; The first one is why the result we submitted at 2023-08-07 10:29 was not updated to the provisional standings. I think this result should be the best result in the history of my team, but it has not been updated to the provisional standings.
+We are investigating this one.
+
+&gt; The second one, the two submissions I submitted at 2023-08-08 20:38 and 2023-08-08 18:20 both showed no results. Do you know the possible reason?
+I tried to run the code you submitted locally, but it seems that Autoware stops working at the initialization process in my environment.
+
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/en/online/index.html#upload-procedure-to-online-environment>
+Have you confirmed that the result.json is output by following this procedure?
+
+I have attached the logs, although I have not been able to see them in much detail.",自分のチームも障害物を回避できなくなり、同じような状況に陥っております。もし対応策や解決策などご存知の方々がおりましたら共有いただけると幸いです。,"<@U05FH8SD2GM>
+<https://github.com/orgs/autowarefoundation/discussions/3784>
+はすごく良い聞き方だと思います。help wanted とかsystemのラベルを貼るといいかもしれません。
+<https://github.com/orgs/autowarefoundation/discussions/3785>
+は<https://github.com/orgs/autowarefoundation/discussions/3784>　と関連しているなら<https://github.com/orgs/autowarefoundation/discussions/3784>　に追記すると良いかなと思いました。","<@U05CFHNAZ8B>
+In my environment, when I press ← to move the vehicle to the left in manual mode, the vehicle turns to the left, but at the same time the Time Scale Bar also decreases. Is this a specification?","PCは使用しても特に問題ないです。:+1: 
+今ある情報は予選のgithubのaichallenge2023のページをご覧ください。",,"<@U05GYU2JDJ5>
+承知しました。
+一応ですが二台構成のときにdocker内でpingは通っている状況でしょうか？","オンライン環境の動作確認について質問があります．
+
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/online/index.html#upload-procedure-to-online-environment|公式サイト>の手順に則って作業を進めて，Autowareを起動するところまではできたのですが初期化が行われず，画像の状態で止まってしまいます．そのため，result.jsonが生成されないです．
+画像中央下のWall Timeの時刻表示も動きがガクガクしていて不安定な感じがします．
+再起動をしてみたのですが，変わりないようです．
+
+通常のセットアップ手順ですと，初期化とその後のシミュレーションは問題なく動きます．
+
+同じような現象になったり，確認した方がよさそうなこと等あれば教えていただけるとありがたいです．よろしくお願いします．","<@U05FH8SD2GM> 
+ありがとうございます。
+1チーム20分程度でその間であれば何回もやり直し可を考えています。
+現在質問を受け付けていますので是非是非いただければと思います。","ブログを投稿してくださっているお二方でもh_bogさんの方では回避行動が生成されているようですが，kiwsdivさんの方では回避行動が生成されていないようです．
+<https://qiita.com/h_bog/items/86fba5b94b2148c4d9da>
+<https://qiita.com/kiwsdiv/items/33b80778f0ddceb6ec44>",<@U05C18Q5NHM>さんがチャンネルに参加しました,朝8時30分に柏の葉キャンパスで、解散は午後17時頃が目処となっております。詳細は10月に公開予定です。よろしくお願いいたします。,（確かに知りたいです..）,"<@U05FDLCUYG6>
+Thank you for question.
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/39>
+it will not fixed at this preliminary competition","I hope we can use the GNSS and IMU data from the simulator to train the model, Can we?","<@U05GL605DT5>
+&gt; 今回自作plannerを追加しようと試みています、この場合は1.plannerのコードをaichallenge_submit以下に追加、2.ビルド対象にする、3.launchファイルにlaunchする旨を追記、だと思っているのですが他に何かお気づきの点あれば伺いたいです。手元でも確認いたします！
+こちらの方法で問題ございません！
+一時的なサーバー障害が原因で失敗していた可能性があるため、もう一度提出してご確認いただけますでしょうか。","<@U05CLQJCULB>
+I think you share a map file.
+I feel sorry that we can't analyze bug for your own needs but I think gear command is lack to drive."
+"できました！お手数おかけしました．ありがとうございます！
+
+~ドキュメンテーションというのは，こちらのことで大丈夫でしょうか．<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html>~","メッセージの型を調べてみたいと思い，*ros2 interface show &lt;メッセージのデータ型&gt;* をしてみたのですが，エラーが出てしまうようです．
+autowareのメッセージの型を調べる方法はどのような方法がありますでしょうか．
+型によってエラーが少し違う気がするので，スレッドに2つ貼らせていただきました．
+よろしくお願いします.",,"<@U05F5LAAN87>
+もしかしたらこちらも有効かもしれませんので、検討いただけると助かります。
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31#issuecomment-1669337611>",,"<@U05CFHNAZ8B> We are not still clear on few things regarding the result calculation and the rule website. We have hand full of questions to be clarified.
+So, Is it possible to have a quick meeting to discuss and understand this in a better way?",<@U05CLQJCULB>yes you can still change code but version is almost tge same as what you use now,this is the screenshot of the error i am getting when i try to run Autoware along with AWSIM. where rVIZ is not coming up,,"Sure, Thanks","<@U05EMENBH6Y>
+Since it seems to have registered with the following account, please check again to see if the email is in your spam/trash box.
+
+<mailto:vm9168@srmist.edu.in|vm9168@srmist.edu.in>
+<mailto:aa7865@srmist.edu.in|aa7865@srmist.edu.in>
+<mailto:hk3472@srmist.edu.in|hk3472@srmist.edu.in>","<@U05CLU6NX8A>
+Thank you for the comment
+<@U05CE8VQV8E> cc <@U05CCP5L7D3> <@U05CJ88GTT6>
+If the above instruction doesn't solve the problem, please let us know.","&gt; AWSIM-stable branch's documentation?
+<@U05FDLCUYG6>
+sorry currently we dont have that version of documentation","hello, I am facing problem in autoware running,
+
+```[service_log_checker-3] [ERROR] [1693133964.252573960] [system.service_log_checker]: /localization/initialize: status code 2 'GNSS is not supported.' (/localization/util/pose_initializer_node)
+[service_log_checker-3] [ERROR] [1693133964.252645333] [system.service_log_checker]: /localization/initialize: status code 2 'GNSS is not supported.' (/default_ad_api/node/localization)
+[service_log_checker-3] [ERROR] [1693133964.252901866] [system.service_log_checker]: /api/localization/initialize: status code 2 'GNSS is not supported.' (/default_ad_api/node/localization)
+[service_log_checker-3] [ERROR] [1693133964.252952487] [system.service_log_checker]: /api/localization/initialize: status code 2 'GNSS is not supported.' (/localization/util/default_ad_api/helpers/automatic_pose_initializer)```
+looks like GNSS unsuported is making the initialization a bit of problem . that is why, the Autoware Rviz cannot get the initial position of the vehicle","<@U05GYU2JDJ5> 
+調査ありがとうございました。
+こちらではテストしきれていない環境もありましたので、cudaの環境などはすぐに正確な回答はできかねますが、運営でも一度検討したいと思います。情報ありがとうございます。
+一方で、現状の環境で問題なく動いている方もいるため、即座の変更は難しいです。すみません。
+
+環境コードの提出方法はai challenge submitの中身ですのでオプションには左右されないかと思います。また、networkやpreriveregedの設定はご自身のlocal環境で実行する分には引数をなくす、追加するなど設定は自由に変更可能です。
+
+もし他の参加者のためにということでしたら、githubのページのFAQの部分にPRを出していただけると大変助かります。
+
+以上よろしくお願いいたします。",,"<@U05F5LAAN87> 
+AWSのインスタンスで実行する場合VNCのようなdisplay serverでGUIを可視化する必要があります。
+可視化の仕方は運営側では把握していないですが、明日情報を持ってる方がいるか聞いてみます。","これでしょうか？
+<https://github.com/tier4/autoware_auto_msgs/blob/tier4/main/autoware_auto_mapping_msgs/msg/HADMapBin.idl>",Or else can we cancel an ongoing simulation testing so that we can add in our final one?,,"<@U05F5LAAN87>
+承知しました。
+
+&gt; 同様の不具合はないため解決策はございません。いただいた状況の範囲からの推測になりますが、
+&gt; • Remote Desktop でアクセスができている
+&gt; • Rviz も起動している
+&gt; • AWSIMの起動も成功している
+&gt; 
+&gt; などを考慮しますと、画面が真っ黒になっているアプリを起動しようとした際に、マップ情報などへのパスの設定が誤っているように感じます。
+&gt; ```ros2 launch hoge hoge fuga fuga```
+&gt; のようなコマンドを実行した際の `map_path` の設定が正しく行われているかご確認いただくと宜しいかと思います。
+確認した結果上記のような回答をいただけました。こちらに関しても確認いただけると助かります。",,This message was deleted.,"hello, I with my wife applied for the challenge. but it seems she did not get the invitation for this slack workspace. Can I add her? my email address is <mailto:sezan92@gmail.com|sezan92@gmail.com>",,"Yes, Thank you :relaxed:",,"なるほど、ご回答ありがとうございます。
+手元で評価した際の結果（rawDistanceScore）と、オンラインジャッジへ投稿した際の結果が結構異なるので原因を考えています。（オンラインの方は障害物が見つからずそのまま進行した時のスコアが出ているようにみえている）
+もし何か思いつく事があればアドバイス頂けると大変助かります。。",,,"ありがとうございます！
+最後に一つだけお伺いしたいのですが，画像のようにInspectionが出てこないというようなことにはならなかったでしょうか",<@U05CCP5L7D3> Ok. Thank you.,"<@U05CLQJCULB> 
+maybe you need gear command to drive forward.
+shift decider own it",ただし、上記はあくまでも整理の仕方の内の1つでしかないため、必ずしもこの構成にしないといけないわけではないです。もし時間があれば別の構成を模索するのも良いかと思います。,"<@U05CFHNAZ8B> <@U05HHLB1L67>
+１回成功したあと，何回かやっているのですが回避行動が生成されないです．添付画像は失敗したときのros2 topic listです．
+
+原因となる部分が違ったようです．
+失敗した場合は，
+*centerpoint/lidar_centerpoint/debug/cyclic_ti~~*
+*centerpoint/lidar_centerpoint/debug/processing~~~*
+が行方不明になります．
+
+このトピックが出ていないのが原因のようです．
+コードを一切変えずに，コンテナ立てて潰してを繰り返しているだけなのですが，難しいところです．",<@U05CJ88GTT6> Thank you now AWSIM and Autoware is working,"<@U05FDLCUYG6>
+&gt; can the participants add new sensors to the car and use the fusion data
+To ensure everyone is working on the task under the same conditions and difficulty, adding new sensors is not allowed.
+ーーーchat gptでの日本語訳ーーー
+同一の条件と難易度で課題に取り組んでいただくため新たなセンサーを加えたりは不可としています。","<@U05GYV37RCH> thank you. i see that the new location of the mapfiles are written under the ""Windows"" section. I expected that to be under Docker + ubuntu section . :sweat_smile: is it fine to edit the documentation ?",hi <@U05CFHNAZ8B> can you please help me to get AWS  testing environment,"経験的にこのパラメータを操作すると回避できなくなるとかそのようなことはなくて総合的に回避経路を作成できなくなるからしなくなるような気がします。road_shoulder_safety_marginが大きすぎると成り立たなくなるとか。
+一番かんたんなのは最後に変更したパラメータをひとつずつ戻していくこと、わからなくなったら最初からやり直すのがいいと思います。私は2回位パラメータリセットしました（笑）
+パラメータをひとつずつちょっとずつ変更していって様子を見るのがいいと思いますが、最適化とかあるらしくて毎回必ず同じ動きをするかというとそうでもないのが分かりづらいですね。","ありがとうございます！
+ラベルに関しては、先日のプルリクエストの時のアサインのように許可された人しか貼れない？ようになっている気がします。
+確認していただけますとありがたいです。
+
+もう一つの方は追記して元の方はクローズしました！","<@U05FH8SD2GM>
+it is a  minor bug but it might not affect too much on competition so I left it still.",ありがとうございます！,,２台構成の環境はもっていないため、検証できません。,"result.jsonが生成されないまま、オンラインシミュレーションに圧縮ファイルをアップロードしたところ、結果は問題なさそうでした。
+<https://aichallenge.synesthesias.jp/|https://aichallenge.synesthesias.jp/>",ありがとうございます！,"<@U05FH8SD2GM> 
+
+いえ、git pullしたデフォルトの設定では回避しないような設定になっていると思います。
+なので、一度変更をstashした場合はpullしたあとにpopしてパラメータ調整の変更の適用が必要になると思います。
+<https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691055461726729?thread_ts=1690966523.148849&amp;cid=C05CJ9BJ96Y|https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691055461726729?thread_ts=1690966523.148849&amp;cid=C05CJ9BJ96Y>",<@U05C19HR17H>さんがチャンネルに参加しました,,"連続した質問すみません．
+<https://automotiveaichallenge.github.io/aichallenge2023-sim/customize/index.html|Autoware-miniのセットアップ> ではfalseにされているbehavior_path_planner.param.yaml内のenable_moduleについてなのですが，enable_module: falseとした場合，これに該当しそうなparam.yamlの設定はどこにも反映されなくなるという意味なのでしょうか
+（例えば，avoidanceのenable_moduleをfalseにした場合，avoidance/avoidance.param.yaml内のパラメータをいくら変更してもPlanningには全く影響しないのかどうか）．
+可能であれば該当するドキュメントなどを教えていただけるとありがたいです．
+よろしくお願いします．","Thank You, Will Checkout",hello it means spawn everytime slightly differently.,"私もオンラインサーバの結果が「結果なし」になっており、原因がわからず苦戦しております。上記の方と同様に自作のplannerをpythonで作成しているのですが、原因として考えられることがあればご教授いただきたいです。
+また、もし可能でれば「結果なし」の原因をご確認いただけますと幸いです。<@U05CFHNAZ8B> <@U05CCP5L7D3>","I am very sorry for the inconvenience caused by my mistake. I re-uploaded the bagfile attachment. In the bagfile attachment, around 300s, the value of gear_cmd is 2, which I think is normal.  We think this may be a BUG, ​​please help to judge.
+<@U05CFHNAZ8B>"
+"Autoware-Miniについての質問なのですが，autoware_mini_awsim.launch.xml内の，たまにある
+`&lt;!-- tier4_perception_msgs/DetectedObjectsWithFeature --&gt;`
+というようなremapタグの横のコメントには何か意味があるのでしょうか．よろしくお願いします．
+
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/5ae37774055467b60acd7f6bdfbee9ba2575d715/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml#L412-L413|https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/5ae37774055467b6[…]aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml>","```root@ubuntu-XA7C-R47T:/autoware# ros2 interface show tier4_perception_msgs/msg/DetectedObjectsWithFeature
+Error processing '// generated from rosidl_adapter/resource/msg.idl.em' of 'tier4_perception_msgs/DetectedObjectsWithFeature': '//'
+Traceback (most recent call last):
+  File ""/opt/ros/humble/bin/ros2"", line 33, in &lt;module&gt;
+    sys.exit(load_entry_point('ros2cli==0.18.6', 'console_scripts', 'ros2')())
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2cli/cli.py"", line 89, in main
+    rc = extension.main(parser=parser, args=args)
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/command/interface.py"", line 35, in main
+    return extension.main(args=args)
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 201, in main
+    _show_interface(
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 148, in _show_interface
+    for line in _get_interface_lines(interface_identifier):
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 116, in _get_interface_lines
+    yield InterfaceTextLine(
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 43, in __init__
+    msg_spec = parse_message_string(
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 520, in parse_message_string
+    Type(type_string, context_package_name=pkg_name),
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 277, in __init__
+    super(Type, self).__init__(
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 190, in __init__
+    raise InvalidResourceName(type_string)
+rosidl_adapter.parser.InvalidResourceName: //```
+```root@ubuntu-XA7C-R47T:/autoware# ros2 interface show autoware_auto_control_msgs/msg/AckermannControlCommand
+#include ""autoware_auto_control_msgs/msg/AckermannLateralCommand.idl""
+#include ""autoware_auto_control_msgs/msg/LongitudinalCommand.idl""
+#include ""builtin_interfaces/msg/Time.idl""
+
+Error processing 'module autoware_auto_control_msgs {' of 'autoware_auto_control_msgs/AckermannControlCommand': ''module' is an invalid message name. It should have the pattern '^[A-Z][A-Za-z0-9]*$''
+Traceback (most recent call last):
+  File ""/opt/ros/humble/bin/ros2"", line 33, in &lt;module&gt;
+    sys.exit(load_entry_point('ros2cli==0.18.6', 'console_scripts', 'ros2')())
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2cli/cli.py"", line 89, in main
+    rc = extension.main(parser=parser, args=args)
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/command/interface.py"", line 35, in main
+    return extension.main(args=args)
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 201, in main
+    _show_interface(
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 148, in _show_interface
+    for line in _get_interface_lines(interface_identifier):
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 116, in _get_interface_lines
+    yield InterfaceTextLine(
+  File ""/opt/ros/humble/lib/python3.10/site-packages/ros2interface/verb/show.py"", line 43, in __init__
+    msg_spec = parse_message_string(
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 520, in parse_message_string
+    Type(type_string, context_package_name=pkg_name),
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 277, in __init__
+    super(Type, self).__init__(
+  File ""/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py"", line 205, in __init__
+    raise InvalidResourceName(
+rosidl_adapter.parser.InvalidResourceName: 'module' is an invalid message name. It should have the pattern '^[A-Z][A-Za-z0-9]*$'```
+",,"<@U05CLQJCULB>
+Could you provide us details how to submit your codes with all the information like a documentation we have provided?",,<@U05CFHNAZ8B> <@U05CCP5L7D3> Is the online environment completely consistent with the offline environment?,"質問失礼致します。
+後半のレーンが狭くなる際、レンレットから車体が出ないように調整したいです。
+avoidanceのようなnodeやpkg、ドキュメントが見つからず困っています。
+もし詳しい方などございましたら、どのあたりのparameterをいじればいいか教えてほしいです。","sudo ip link set lo multicast on
+多分AWSIMのドキュメントにもあるip link setが必要かも。
+<@U05CJ88GTT6> 
+月曜日確認お願いします。",,"<@U05J7EYA8QG>
+Thank you for your opinion, we are sorry for the inconvenience.
+We have discussed again how to do with above and we will inform you of the policy at a later date.","Got it, thank you","Dear all, I did the same and again getting the same error",Ok Thanks,,"<@U05CFHNAZ8B>
+time scaleとtimer periodを両方試したのですが、改善はされませんでした。
+（time scaleは念のため0.25も試しました）
+スレッドの最初にあるエラーメッセージにて、trajectory_validationがaccelerationなど複数の値についてtoo largeというエラーを出しているのですが、このメッセージから何かわかりますでしょうか？
+（Set Up手順のどこかの設定が漏れている、うまく実行できていないといったようなものがわかったりしますでしょうか？）",,"<@U05HHL9M74K> 
+yes we announced at <#C05CCP00Y7P|announce-all_全体お知らせ> 
+
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1688123357972179|https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1688123357972179>
+
+Did I answer your question？",,Please help,,"Is reverse operation not supported in AWSIM? I raised an issue, could you kindly provide an answer? Thank you for your effort.   <https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/26>",,"<@U05HHL5CY7M> 
+launch fileの書き方はtopicの型の把握、topicの名前の把握等様々な知識が必要になります。
+たまたま見つけた記事ですが、topicの型に関して記載があったので、参考にされるといいかもしれません。
+
+また、launch fileの書き方に関してはwebでros2と検索し調べると様々なsampleなどが見つかります！
+
+<https://qiita.com/yhisaki/items/c4973445a76aa148e789|https://qiita.com/yhisaki/items/c4973445a76aa148e789>",yes you can,,If you see msgs in questions then most of them are not in English,,"<@U05CFHNAZ8B>
+こちらもう一度確認させていただきたいのですが，デフォルトではobstacle avoidabceの回避はoff，behavior pathの回避はonということをおっしゃられていると思いますが正しいでしょうか．
+obstacle avoidabceの回避のon offの設定は<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/ed597398dd9a860884c4faa9374cc9a08b9fa09a/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml#L5|skip optimization>だと思うのですが，デフォルトではスキップされていなそうなのでobstacle avoidabceの回避はonなのではないかと思っています．
+そしてbehavior pathの回避もonなのではないかと思っています（Autoware-miniのセットアップではoff）．
+
+よろしくお願いします．
+<https://aichallenge2023-integ.slack.com/archives/C05CJ9BJ96Y/p1691059443655499?thread_ts=1690966523.148849&amp;cid=C05CJ9BJ96Y>",,,"<@U05F5LAAN87> 
+time scaleはawsimの画面の下部にスライドバーで出てくるやつです。そちらを0.5くらいに設定すると安定して動作する可能性があります。","<@U05CLQJCULB>
+I've updated the online environment. It should be fixed now.",,"承知しました！
+別々になっている理由がよく分かりました。
+ありがとうございます","<@U05FH8SD2GM> 
+center pointは今回の課題では不要になりますが、一旦それはおいておくとして、こちらの現象は開発者にfeedbackしておきます。","When running Autoware, I encountered the following issue: [component_container_mt-1] 1687588281.576747 [] component_: create_thread: component_conta: no free slot. After this log, the pointcloud_container dies. What could be the cause of this issue?","Thanks for the reply <@U05CFHNAZ8B>, As you said we can create our own package, can the package be driven by a Ai model(that we trained before for this environment) or only live mathematical calculation is allowed(with some param changes)?","I think you miss a session below Windows, a seesion called Copy map data (osm, pcd)","<@U05CE8VQV8E>
+There is an instruction here
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1690880627262159>
+
+&gt; can you please help me to get AWS testing environment
+if above doesn't help please ask any question thankyou.","<@U05CLQJCULB>
+&gt; What information do you need? I can provide it to you. Thanks.
+OK If you test normal Autoware and if you could not change gear command that can be a bug.
+So I want to see if it happen or not.
+
+Or if you share your fork repository some one might help you to find a  bug.",,"<https://automotiveaichallenge.github.io/aichallenge2023-sim/online/index.html>
+ここに記載の事柄について質問があります。
+Upload Procedure to Online Environmentの3番目にAWSIMの起動とあります。これは同じdockerコンテナ内で起動するのでしょうか？
+どこで起動するのか教えていただきたいです",,,"<@U05GYU2JDJ5>
+お手数ですが、動作環境と作業手順（export ROS_LOCALHOST_ONLY=0）などを１つづつ書き出していただくことは可能でしょうか？
+可能であれば<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/32|git pull>もお願いします。（該当の箇所を主導で編集でもかまいません。）
+また、<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/pull/32|こちら>と同様にオンライン環境にuploadした場合は問題ないかも記載いただけると助かります。","AWSIMを実行する際に以下のようなエラーが発生しています。
+```root@ai-challenge2023-x86:/aichallenge/AWSIM# ./AWSIM.x86_64 
+Set current directory to /aichallenge/AWSIM
+Found path: /aichallenge/AWSIM/AWSIM.x86_64
+Segmentation fault (core dumped)```
+症状としてはAWSIMの<https://github.com/tier4/AWSIM/issues/87|Issue>で報告されている事象と同様かと思われます。回避策はありますでしょうか？",,余談ですが、変更のトラッキングにはvscodeとvscodeのpluginのgit graphをオススメします。,<@U05CCP5L7D3>さんがチャンネルに参加しました,,"ここで言及してくださっていたことに今気が付きました．失礼いたしました．
+これを読んで理解してみます．
+<https://aichallenge2023-integ.slack.com/archives/C05C90ZCPQW/p1689127645981799?thread_ts=1688622424.337459&amp;cid=C05C90ZCPQW>",Where can we find the exact documentation of the version of Autoware used  for the Challenge? The current(latest) Universe documentation of the Autoware seems to have different set of params and it is difficult to understand few params. Can anyone share the link to the documentation of the Autoware version used in the challenge docker?,because of initialization accuracy,"<@U05GL605DT5> 
+<@U05FSJH5083> 
+該当のPython実装部分をDMなどで共有いただくことは可能でしょうか？
+原因がわからない可能性は高いですが、アドバイスできる点があるかもしれません。",
+dummy detection objects らしいですね,"<@U05FH8SD2GM> 
+topicの型を調べる際はros2 topic info -v fuga_topicかもしくはnodeが特定できれば、ros2 node info hoge-nodeで調べることができます。",,"<@U05GYU2JDJ5>
+上記の実行をどちらもrootから試してみてもらえますでしょうか？",,"<@U05CFHNAZ8B> <@U05CCP5L7D3> In the rules page, it is mentioned that the rawDistanceScore in the results.json is the distanceScore without penalty. But I could see both rawDistanceScore and distanceScore are same in the results.json eventhough task3 boolean is false. We would like to understand the exact meaning of rawDistanceScore and distanceScore in the results.json so that we could calculate the penalties that we got.","質問失礼いたします。
+以下の写真のようにオンライン採点へのログインができません。
+何度か試みてはいますが、入れないためもし原因が分かれば教えていただきたいです。よろしくお願い致します。
+まだ一度もログインしていないため、パスワードの変更を行ったわけではありません。",,,"環境についてご相談・ご教授いただきたく。
+事情によりコンテスト推奨のUbuntu環境が用意できず、GPU付きWindows 10環境は用意できたのですが、
+Windows 10環境でもコンテストに参加することは可能でしょうか？
+Windows 10でもコンテストに参加可能でしたら、頑張って環境構築し一度でもいいのでなんとかサブミットできるようチャレンジしたいと考えております。
+ご存知の方、もしくはすでにWindows 10環境で構築・実装されている方がいらっしゃったら、環境構築等アドバイスいただけると幸いです。
+よろしくお願いいたします。",,can you please help me on this,"Autowareのカスタマイズについて質問いたします。
+Autoware-Miniに既存のAutowareのノードを追加するためには、具体的にどのような手順を踏めばよいのでしょうか？","<https://github.com/tier4/golfcart_description/blob/8b007ffeeb922aca60662b0714722833bb7a3990/golfcart_description/config/simulator_model.param.yaml#L18|こちら>のゴルフカートのコンフィグについて質問させていただきます．
+vel_rate_limの単位は何でしょうか．
+よろしくお願いします．","上記のerrorはplanningの経路が出ていないためによるものになります。
+setupのどの手順が漏れているのかは推測できません。
+すみません。
+
+解決策ではないかもしれないですが、autoware miniの設定にしてみても同様の事象が起こりますでしょうか？",,"<@U05CFHNAZ8B>
+ありがとうございます。ご確認お願いします。
+【補足】
+同サーバ上でAWSIMの方は正常に画面表示できています。
+AWSでGUI環境が使えるよう、下記サイトの手順を実行しています。（ubuntu-desktopやxrdpをインストールしてWindows PCからリモートデスクトップ接続して使用しています）
+<https://www.fujimiya-san.com/archives/1038#index_id6>",,Is there any chance you can enable simultaneous simulation please help,,<@U05CFHNAZ8B>,,<@U05CLQJCULB>sorry we currently dont support logging system. so please post as request for next competition.,,,<@U05C14GC97Z> added her ,,,,,"おそらく、rosのpackage情報が更新されていないかと思います。`source /opt/ros/humble/setup.bash` を実行するかterminalを閉じて開きなおすか何かすると治るかと思います。
+私はdocker imageを作るときにすでにinstalしているので正確な直し方は検証してなくてあいまいな答えですみません。",Nmy submission is taking more than a hour. Is it because of the changes made in online environment? Can someone check weather it is a bug? <@U05CFHNAZ8B>,,"Is there any way to reset the AWSIM to the initial position instead of restarting everytime? Also, how to control manually in AWSIM","ありがとうございます．
+center pointは今回の課題では不要であるのにも関わらず，そのトピックの有無と回避動作の有無が連動しているように見えるのは，もう少し根本的なところに原因があって，center pointに関してはその結果である可能性があるということでしょうか．
+
+つまりcenter pointのトピックが必ず出るように工夫することに意味はあまりなくて，他の原因を探した方が良いのかどうかということをお伺いしたいです．
+（あまりPerceptionのところが理解できておらず，丸投げになってしまい申し訳ありません）",please see closed issue if it is not same or not,"<@U05FDLCUYG6>
+we dont restrict module type, you can use reinforcement learning or pre-trained model
+but make sure that your model can run at real time. we dont support for delays exclude AWSIM","SetUp手順の「Autowareの動作確認」の5にて「ゴールポジションをドラッグで指定」をしたところ、ゴールは指定されているのですが、数分ほど待ってもルートが表示されず、OperationModeのAUTOボタンが活性になりませんでした。（添付画像）
+Autowareのログは添付error.zipで、恐らく下記エラーが問題なのだと思いますが、特に設定などいじっておらず、まだSetup段階のため原因がわからない状態です。
+どなたか何かわかりますでしょうか？
+```[system_error_monitor-20] [ERROR] [1690710613.017341981] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017375866] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring/topic_status/topic_state_monitor_control_command_control_cmd: control_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017387890] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring/topic_status/topic_state_monitor_trajectory_follower_control_cmd: control_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017400579] [system_error_monitor /autoware/planning/node_alive_monitoring]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017407998] [system_error_monitor /autoware/planning/node_alive_monitoring/topic_status/topic_state_monitor_mission_planning_route: planning_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017416300] [system_error_monitor /autoware/planning/node_alive_monitoring/topic_status/topic_state_monitor_scenario_planning_trajectory: planning_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017432983] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation]: [Single Point Fault]: Error
+[system_error_monitor-20] [ERROR] [1690710613.017441733] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_acceleration/planning_validator: trajectory_validation_acceleration]: [Single Point Fault]: acceleration is too large
+[system_error_monitor-20] [ERROR] [1690710613.017482618] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_curvature/planning_validator: trajectory_validation_curvature]: [Single Point Fault]: curvature is too large
+[system_error_monitor-20] [ERROR] [1690710613.017489685] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_deceleration/planning_validator: trajectory_validation_deceleration]: [Single Point Fault]: deceleration is too large
+[system_error_monitor-20] [ERROR] [1690710613.017496923] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_finite/planning_validator: trajectory_validation_finite]: [Single Point Fault]: infinite value is found
+[system_error_monitor-20] [ERROR] [1690710613.017504828] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_interval/planning_validator: trajectory_validation_interval]: [Single Point Fault]: points interval is too long
+[system_error_monitor-20] [ERROR] [1690710613.017513665] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_lateral_acceleration/planning_validator: trajectory_validation_lateral_acceleration]: [Single Point Fault]: lateral acceleration is too large
+[system_error_monitor-20] [ERROR] [1690710613.017520891] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_relative_angle/planning_validator: trajectory_validation_relative_angle]: [Single Point Fault]: relative angle is too large
+[system_error_monitor-20] [ERROR] [1690710613.017530605] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_steering/planning_validator: trajectory_validation_steering]: [Single Point Fault]: expected steering is too large
+[system_error_monitor-20] [ERROR] [1690710613.017537460] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_steering/planning_validator: trajectory_validation_steering_rate]: [Single Point Fault]: expected steering rate is too large
+[system_error_monitor-20] [ERROR] [1690710613.017546096] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_steering_rate/planning_validator: trajectory_validation_steering_rate]: [Single Point Fault]: expected steering rate is too large
+[system_error_monitor-20] [ERROR] [1690710613.017553789] [system_error_monitor /autoware/planning/performance_monitoring/trajectory_validation/trajectory_validation_velocity_deviation/planning_validator: trajectory_validation_velocity_deviation]: [Single Point Fault]: velocity deviation is too large```
+ちなみに、AWSIMとAutowareは同じRockerコンテナに入るため、Autoware用のTerminalでは下記手順でコンテナに入っていますが、合っていますでしょうか？
+`docker container ls`でコンテナIDを確認し、`docker exec -it コンテナID bash`でコンテナに入る。",,Is the bagfile in the attachment available for you to test？,,Dockerコンテナ内での起動になります。,,,`ROS_LOCALHOST_ONLY=1`だと２台目のPCにTopicが到達しないだけで、PC１台で実行する場合はどちらでも問題がない気がします。,"<@U05CFHNAZ8B>
+時間が取れず、返答が遅れ申し訳ありません。
+初歩的な質問かと思いますが、time scaleというのは具体的にどの設定ファイルの値を変えれば良いでしょうか？",,"ありがとうございます！git graphに関しては使っていなかったので使っていきたいと思います．
+
+<https://aichallenge2023-integ.slack.com/archives/C05C90ZCPQW/p1689127645981799?thread_ts=1688622424.337459&amp;cid=C05C90ZCPQW|こちらのスレッド>でobstacle avoidanceの有効化・無効化の説明をしてくださったと思うのですが，リポジトリあるパラメータの状態では無効化されているということでしょうか．
+
+よろしくお願いします．",<@U05CFHNAZ8B>さんがチャンネルに参加しました,,なるほど！過去スレッド探せばたくさん知見ありますね！,"system_error_monitor-44が大量のエラーメッセーじを出してしまうのですが、疑うべきはどのあたりでしょうか？
+
+```
+
+[component_container-24] [WARN] [1692706934.313000700] [planning.scenario_planning.lane_driving.behavior_planning.behavior_velocity_planner]: no transform found for no_ground_pointcloud: Lookup would require extrapolation into the past.  Requested time 6.890000 but the earliest data is at time 7.110000, when looking up transform from frame [base_link] to frame [map]
+[component_container-24] [WARN] [1692706934.434339626] [planning.scenario_planning.lane_driving.behavior_planning.behavior_velocity_planner]: no transform found for no_ground_pointcloud: Lookup would require extrapolation into the past.  Requested time 6.990000 but the earliest data is at time 7.110000, when looking up transform from frame [base_link] to frame [map]
+[component_container-24] [WARN] [1692706934.545611561] [planning.scenario_planning.lane_driving.behavior_planning.behavior_velocity_planner]: no transform found for no_ground_pointcloud: Lookup would require extrapolation into the past.  Requested time 7.090000 but the earliest data is at time 7.110000, when looking up transform from frame [base_link] to frame [map]
+[system_error_monitor-44] [INFO] [1692706936.964133198] [system.system_error_monitor]: waiting for current_gate_mode msg...
+[component_container-24] [INFO] [1692706936.964955597] [planning.scenario_planning.lane_driving.behavior_planning.behavior_path_planner]: waiting for route
+[emergency_handler-45] [INFO] [1692706936.965134589] [system.emergency_handler]: waiting for hazard_status_stamped msg...
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/trajectory_follower/controller_node_exe' in container '/control/control_container'
+[component_container-26] [INFO] [1692706938.870580257] [control.control_container]: Load Library: /autoware/install/external_cmd_selector/lib/libexternal_cmd_selector_node.so
+[component_container-26] [INFO] [1692706938.873890986] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;ExternalCmdSelector&gt;
+[component_container-26] [INFO] [1692706938.873951004] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;ExternalCmdSelector&gt;
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/external_cmd_selector' in container '/control/control_container'
+[component_container-26] [INFO] [1692706938.932209279] [control.trajectory_follower.controller_node_exe]: Waiting for trajectory.
+[component_container-26] [INFO] [1692706938.932271918] [control.trajectory_follower.controller_node_exe]: Control is skipped since input data is not ready.
+[component_container-26] [INFO] [1692706938.934400692] [control.control_container]: Load Library: /autoware/install/external_cmd_converter/lib/libexternal_cmd_converter.so
+[component_container-26] [INFO] [1692706938.938156061] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;external_cmd_converter::ExternalCmdConverterNode&gt;
+[component_container-26] [INFO] [1692706938.938207413] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;external_cmd_converter::ExternalCmdConverterNode&gt;
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/external_cmd_converter' in container '/control/control_container'
+[aggregator_node-43] [WARN] [1692706938.971934776] [Aggregator]: No timestamp set for diagnostic message. Message names: external_cmd_converter: remote_control_topic_status
+[component_container-26] [INFO] [1692706938.973523721] [control.control_container]: Load Library: /autoware/install/lane_departure_checker/lib/liblane_departure_checker.so
+[component_container-26] [INFO] [1692706938.991932768] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;lane_departure_checker::LaneDepartureCheckerNode&gt;
+[component_container-26] [INFO] [1692706938.991982736] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;lane_departure_checker::LaneDepartureCheckerNode&gt;
+[component_container-26] [WARN] [1692706939.049036143] [control.trajectory_follower.lane_departure_checker_node]: failed to get transform from map to base_link: Could not find a connection between 'map' and 'base_link' because they are not part of the same <http://tree.Tf|tree.Tf> has two or more unconnected trees.
+[component_container-26] [INFO] [1692706939.049142593] [control.trajectory_follower.lane_departure_checker_node]: waiting for self pose...
+[emergency_handler-45] [INFO] [1692706942.108005347] [system.emergency_handler]: waiting for hazard_status_stamped msg...
+[system_error_monitor-44] [INFO] [1692706942.108278512] [system.system_error_monitor]: waiting for current_gate_mode msg...
+[component_container-24] [INFO] [1692706942.108423780] [planning.scenario_planning.lane_driving.behavior_planning.behavior_path_planner]: waiting for route
+[rviz2-58] [INFO] [1692706943.169278586] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.290 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.269385938] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.390 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.369716188] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.490 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.467132176] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.590 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.569298614] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.690 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.667233484] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.790 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.770861319] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.890 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.867522664] [rviz2]: Message Filter dropping message: frame 'base_link' at time 6.990 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[rviz2-58] [INFO] [1692706943.966714679] [rviz2]: Message Filter dropping message: frame 'base_link' at time 7.090 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[component_container-26] [INFO] [1692706944.049645214] [control.trajectory_follower.controller_node_exe]: Waiting for trajectory.
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/trajectory_follower/lane_departure_checker_node' in container '/control/control_container'
+[component_container-26] [INFO] [1692706944.049690341] [control.trajectory_follower.controller_node_exe]: Control is skipped since input data is not ready.
+[component_container-26] [INFO] [1692706944.053531508] [control.control_container]: Load Library: /autoware/install/shift_decider/lib/libshift_decider_node.so
+[component_container-26] [INFO] [1692706944.055257262] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;ShiftDecider&gt;
+[component_container-26] [INFO] [1692706944.055284392] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;ShiftDecider&gt;
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/shift_decider' in container '/control/control_container'
+[component_container-26] [INFO] [1692706944.099471445] [control.control_container]: Load Library: /autoware/install/vehicle_cmd_gate/lib/libvehicle_cmd_gate_node.so
+[component_container-26] [INFO] [1692706944.105676312] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;vehicle_cmd_gate::VehicleCmdGate&gt;
+[component_container-26] [INFO] [1692706944.105710047] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;vehicle_cmd_gate::VehicleCmdGate&gt;
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/vehicle_cmd_gate' in container '/control/control_container'
+[component_container-26] [INFO] [1692706944.195492856] [control.trajectory_follower.lane_departure_checker_node]: waiting for route msg...
+[component_container-26] [INFO] [1692706944.202924581] [control.control_container]: Load Library: /autoware/install/operation_mode_transition_manager/lib/liboperation_mode_transition_manager_node.so
+[component_container-26] [INFO] [1692706944.211345900] [control.control_container]: Found class: rclcpp_components::NodeFactoryTemplate&lt;operation_mode_transition_manager::OperationModeTransitionManager&gt;
+[component_container-26] [INFO] [1692706944.211393409] [control.control_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate&lt;operation_mode_transition_manager::OperationModeTransitionManager&gt;
+[INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/control/operation_mode_transition_manager' in container '/control/control_container'
+[component_container_mt-48] [INFO] [1692706944.285663502] [default_ad_api.node.motion]: client call: /control/vehicle_cmd_gate/set_pause
+[component_container-26] [INFO] [1692706944.288231648] [control.vehicle_cmd_gate]: server call: /control/vehicle_cmd_gate/set_pause
+[component_container-26] [INFO] [1692706944.288507000] [control.vehicle_cmd_gate]: server exit: /control/vehicle_cmd_gate/set_pause
+[component_container_mt-48] [INFO] [1692706944.288743521] [default_ad_api.node.motion]: client exit: /control/vehicle_cmd_gate/set_pause
+[system_error_monitor-44] [ERROR] [1692706944.290886403] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring]: [Single Point Fault]: Error
+[system_error_monitor-44] [ERROR] [1692706944.290920766] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring/topic_status/topic_state_monitor_control_command_control_cmd: control_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-44] [ERROR] [1692706944.290931146] [system_error_monitor /autoware/control/autonomous_driving/node_alive_monitoring/topic_status/topic_state_monitor_trajectory_follower_control_cmd: control_topic_status]: [Single Point Fault]: Error
+[system_error_monitor-44] [ERROR] [1692706944.290938443] [system_error_monitor /autoware/localization/performance_monitoring/localization_accuracy]: [Single Point Fault]: Stale
+[system_error_monitor-44] [ERROR] [1692706944.290945524] [system_error_monitor /autoware/planning/node_alive_monitoring]: [Single Point Fault]: Error
+[system_error_monitor-44] [ERROR] [1692706944.290952675] [system_error_monitor /a```","Ok got it, Thanks :+1:","<@U05CFHNAZ8B>
+ご連絡ありがとうございます！DMで共有させていただきます！",
+"<@U05FH8SD2GM> 
+コメントはmessageのtypeのメモだと思います。
+
+rockerを起動したターミナルでros2 topic info -v で入力出力のtopic見てみてください:thumbsup_all:","返信ありがとうございます．
+説明不足で申し訳ありません．
+topicの型ではなく，メッセージの<http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/MapMetaData.html|データ構造>が知りたいです．
+ROS1ではrosmsgで出力できたものです．
+よろしくお願いします．
+（初学者なので意味不明なことを言っていたらすみません）",,"Cloudのためrootへの切り替えかたがよく分かりませんでした。
+evaluation/run_container.shの中身を以下のように--net bridgeにして実行したらコンテナ外からtopicが見えました。結果を添付します。
+```#!/bin/bash
+rocker --nvidia --user --net bridge --volume output:/output -- aichallenge-eval```
+",,"1. In task 3's clear condition, we have a point stating to stop after completing the race. Is that mean the golf cart should stop at the exact stop  location highlighted in the AWSIM or it can stop anywhere near to it?
+2. Will the penalty be calculated each time the golf cart goes out of lane, or is it the only the first time it goes off track?
+3. We got to know that the results.json is getting generated even before it turns right to reach the goal position. Is that expected behaviour to happen? If yes, then is reaching the goal appropriately is not a evaluation parameter for the competition.","<@U05CCP5L7D3> <@U05CJ88GTT6>
+上記対応宜しくおねがいします。",,,"<@U05CZHBFK4Z>
+お世話になります。
+
+本大会のサポート対象はHP記載の構成になります。
+そのため、運営としてではなく、1個人としてのご案内になりますこと、ご了承ください。
+
+-------
+参加するためには、Autoware環境が問題です。
+そのため、いかに「Autowareを動かすための環境を用意」するかがポイントかと。
+性能やパッケージの有無、ホスト-コンテナ内の通信設定などの問題が起きる可能性がありますが、以下の方法があると思います。
+※1以外、試したことがなく，2.3.4はAutowareが動作するかは分からないですが．．
+
+
+１：デュアルブートでUbuntuを用意
+２：Windows上にVMでUbuntuを用意
+　　→　Hyper-V、VirtualBox、VMwareなど。。
+３：WSL2上にUbuntuを用意
+４：Windows上にdocker環境を用意（直接、Autowareのイメージを入れる）",,"<@U05CE8VQV8E>
+Did you get any errors when you typed the following command?
+`sudo apt-get install python3-rocker`","<@U05HHL5CY7M> 
+質問ありがとうございます。
+色々なやり方が考えられそうですが、この記事にも似たような試みが記載されているみたいなので良かったら参考にしてみてください。
+<https://qiita.com/h_bog/items/a2c2cbdcec6a852bfcd5|https://qiita.com/h_bog/items/a2c2cbdcec6a852bfcd5>","おそらくros2 param loadで変更できるかと思います。
+例えば、以下はobstacle_avoidance_plannerノードのパラメータを変更する場合のコマンドです。
+ros2 param load /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner /aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml",,,"Hello, I am following the docker setup of both AWSIM and Autoware. My intention is to run both in the docker containers respective. I tried to follow <https://automotiveaichallenge.github.io/aichallenge2023-sim/en/setup/>
+
+however, I see that the Autoware rviz is not able to access the map topic or something, as it finds impossible to self position . Here is the screenshot, the left most is the AWSIM from a docker container, the rightmost is the Rviz Autoware from the same container. The middle screenshot shows the three terminals. IN one terminal i tried to do ""ros2 topic echo /aichallenge/score"" it seemed not to publish anything, which makes sense as the score is not publishing anything yet. I also checked `ros2 topic echo /vehicle/status/velocity_status` , it seemed to publish the velocity of the vehicle well. not sure why the rviz is unable to self position,",,"<@U05EMENBH6Y>
+&gt; Is it possible to extend the time Or else can we cancel an ongoing simulation testing so that we can add in our final one?
+Sorry we can't extend time or cancel uploading and push another one. Condition is same to all participants.",,"<@U05CLQJCULB>
+I think reverse operation is possible. When we have tested it was possible to drive backward I will check this later.",,,,,,,,,,"ありがとうございます！
+確かにその可能性があるので試してみます！ros2あまり慣れていないのでアドバイスありがたいです．",<@U05CCP5L7D3>,,"<@U05CLQJCULB>
+<https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1690372523016969|https://aichallenge2023-integ.slack.com/archives/C05CCP00Y7P/p1690372523016969>
+here is hotfix version of awsim
+please test with thia file","<@U05FH8SD2GM> 
+center pointは車両とトラックと歩行者を検知してくれるのですが、ダンボールなどタグ付けされていないものは検知できないです。
+
+ただ、現状のautowareとしてはplanningがobjectを受け取らないと動かないようになっており、objectを受け取る段階でcenter pointを使うデフォルトの構成にしていると、以下の2つの原因により不具合が起こります。
+
+1.center pointが死んだときにplanningが経路を生成できなくなる。
+2. data associationでclusteringによる障害物検知結果が消される
+
+なので、perceptionの構成はautoware miniが理想的ですが、このあたりを理解してノードの足し引き、取捨選択をして実装するのはなかなか難しいので、center pointが問題なく動くようにすることは重要になってくるかもしれません。",<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues?q=is%3Aissue+is%3Aclosed>,here is an image for expart developer,コンテナを別々に立てて(別々のターミナル)みるとどうなるでしょうか？,,<@U05CFHNAZ8B>,,"別のコンテナでAWSIMを立ち上げてもinitializeできません。
+同じコンテナ内はAWSIMディレクトリをマウントしていないので同じコンテナ内ではできません。
+``` sudo ip link set multicast on lo
+ source /autoware/install/setup.bash
+ /aichallenge/AWSIM/AWSIM.x86_64```
+上のコマンドを叩けば、同じネットワーク内なら別のコンテナでもinitializeできるはずなんですかできていないです、、",,,自分たちのチームも同じ状況になり、、と書き込もうとしたら記載の内容で解決(?)しました。Autoware起動--&gt;1min待つ--&gt;AWSIM起動、ros2 topic listで同様のトピックが出ていました。ありがとうございます！,"実行環境は以下の通りで、setupガイドとは少し異なります。
+
+• 実行基盤： GCP T4インスタンス(CPU 8コア, MEM: 30GB, OS: Ubuntu22.04, Arch: x86_64)
+• Docker image : <http://ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1|ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1> にVNCをインストールして使用
+• rocker を使用せずにdocker-compose.ymlから同様のコマンドで起動
+なお、Autowareの実行コマンドではRvizが正常に立ち上がります。
+念のため、docker container内から`nvidia-smi`を実行した結果は以下の通りでした。
+```Sun Aug  6 02:27:47 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.86.05              Driver Version: 535.86.05    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla T4                       Off | 00000000:00:04.0 Off |                    0 |
+| N/A   35C    P8              11W /  70W |      2MiB / 15360MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+```",,"<@U05FH8SD2GM> 
+回避には二種類あり、behavior pathとobstacle avoidanceがあります。
+デフォルトではobstacle avoidabceの回避はoffで、経路の平滑化のみ行われる設定になっています。
+また、デフォルトではbehavior pathで回避する設定にはなっていますがその際の回避対象物は車とトラックのみとなってます。",<@U05CFMXEWDQ>さんがチャンネルに参加しました,,"実行環境が同じではなく現象が再現できなければ回答が難しいのは理解します。
+こちらで、以下の事を試しました。
+コンテスト用のdocker imageにsrcが無かったため、<https://github.com/autowarefoundation/autoware|autoware>からsrcをdownloadしdriver, cudnn, tensorrtをインストールし全体をbuildし直しました。
+結果は、aichallengeのコードと現在のautowareのコードではpkg構成(planner)やmsg(livox?)など変更があるようでautowareはコンパイルできるものの、aichallengeの環境がbuildできなくなりました。
+
+また、関係があるかは分かりませんがAWISMはコンテスト用のdocker imageではcore dumpで終了してしまし実行できません。
+autowareから以下のdocker image をdown load してdriver を更新した場合は実行できました。
+```<http://ghcr.io/autowarefoundation/autoware-universe:humble-latest|ghcr.io/autowarefoundation/autoware-universe:humble-latest>```
+現状手詰まりな感じですが、何かできることはありますでしょうか？",「Autoware-Mini」で動作させているかつ「Stale」のエラーという認識でよろしいでしょうか？その場合は当方でも同様のログを確認していて起動ファイル側にlocalization.error_monitorとplanning.planning_validatorのノードが入っておらずこれによりDiagが故障のエラーを検出していると仮定、ノードを追加させたら出なくなりました。（当方有識者ではなく初心者ですのでご参考までに。。。）,<@U05CFHNAZ8B>?,Is the online scoring environment the final submission page or is there another portal for submission?,
+確認できました！ありがとうございます！,"<@U05FH8SD2GM> 
+今手元にpcがなく、簡素な回答となってしまいますが、<https://github.com/AutomotiveAIChallenge/autoware/blob/ai_challenge/v2023.07.0/autoware.repos|https://github.com/AutomotiveAIChallenge/autoware/blob/ai_challenge/v2023.07.0/autoware.repos>
+
+こちらのtier4_autoware_messagr，autoware_auto_messageのレポジトリのurlを見るとわかります。
+
+ros2 interface showで正しく表示されないのは既知の問題ですが、原因などはわかりません。
+すみません。",,"<@U05CFHNAZ8B>
+Sorry, I forgot to provide my account number. My account number is liuhonggang02. Can you help me check the above two questions based on my account number?",,,回避モジュールに関して関係者にヒアリングしたところ構造が複雑でしたので、後ほど調査結果を共有いたします。,,,"平松様、
+ご助言いただきありがとうございました。
+Autowareを動かすための環境を用意することがポイントとのこと、承知しました。
+改めて検討してチャレンジしたいと存じます。ありがとうございました。",,no error,Where can I check the leaderboard for the competition?,<@U05CFHNAZ8B>?,,,"<@U05HHL9M74K>
+Can you make a memo of ""the way to reproduce"" this problem?
+
+Here are a few things you could try:
+1. Check your ROS2 topic connections: You can use the command `ros2 topic info &lt;topic_name&gt;` to check if your nodes are properly connected to the topic. If the Autoware node is not subscribing to the correct topic, it may cause the issue you're experiencing.
+2. Check the transformations (TFs): RViz needs to know the transformation between the vehicle frame and the map frame to be able to correctly display the position of the vehicle on the map. If these transformations are not properly set, it can lead to problems with positioning. You can use `ros2 tf2 frames` to print the transformation tree and `ros2 tf2 echo &lt;source_frame&gt; &lt;target_frame&gt;` to check individual transformations.
+3. Check the logs: There may be useful information in the logs of the Autoware node or RViz. If you see any error messages or warnings, they may give a clue as to what is going wrong.
+4. Did you try <https://automotiveaichallenge.github.io/aichallenge2023-sim/local/index.html> as well?
+If these steps don't help, could you please provide more information about your setup, such as the version of Autoware and AWSIM you are using, and the exact commands you used to launch them? This will help us understand your problem better and provide a more targeted solution.
+I look forward to hearing back from you and am confident we can resolve this issue together.",,,,"<@U05F5LAAN87>
+&gt; このリンクの中に答えたあるのではとのこと。質問者のレベルが高いので、このリンクを渡せばわかるはず、とのことです。
+とのコメントもあり、こちらも参考になるのかもしれません。
+<https://github.com/ros2/rviz/issues/948>",,,,,,,,,,こちらの現象は明日担当のものに確認してみます。,i think it is because of quota or update timing.,,"<@U05FDLCUYG6>
+Press Manual Button and input
+Press ""D"" key to change to Drive mode and drive forward with arrow key
+Press ""R"" key  to reverse mode  and drive backward with arrow key.
+Please ask any question if you have in trouble.
+---via gpt
+""Manual""ボタンを押して入力してください。
+""D""キーを押してドライブモードに切り替え、矢印キーで前進します。
+""R""キーを押してリバースモードに切り替え、矢印キーで後進します。
+何か問題がある場合は、何でも質問してください。","ありがとうございます．
+center pointについて詳しく知りたいのですが，情報があるのはこのページのみでしょうか．
+<https://autowarefoundation.github.io/autoware.universe/main/perception/lidar_centerpoint/>",,"Awesome, got it, in that case, can you share the specifications of the compute in which the submission will be evaluated?","<@U05FH8SD2GM>
+それは私も気になって、コンテナを別々に立ててもやってみていたのですが、同じ結果でした。",,"<@U05CLQJCULB>
+yes it's enough but I cannot reproduce your problem so far.",,"<@U05HHLB1L67> 
+• faq
+• issue
+• slackの質問スレッド
+上記に同様の現象はありそうでしょうか？",,,"AWSIMを実行後、`ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sensor_model:=awsim_sensor_kit map_path:=/aichallenge/mapfile` を実行したときのlogを保存しました。
+こちらから何か原因を推察する情報はありますでしょうか？","なお、AWSIMの<https://tier4.github.io/AWSIM/GettingStarted/QuickStartDemo/|デモページ>からdownloadした実行ファイルでも同じエラーが発生しました。
+```Set current directory to /home/user/workspace/AWSIM_v1.1.0
+Found path: /home/user/workspace/AWSIM_v1.1.0/AWSIM_demo.x86_6
+Segmentation fault (core dumped)```",,"ありがとうございます．
+<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/6f6b85349ccd986587b90718d9bf94f9f5dc6401/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/avoidance/avoidance.param.yaml#L27-L36|avoidance.param.yaml>（behavior path）と<https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/obstacle_avoidance_planner.param.yaml|obstacle_avoidance_planner.param.yaml>（obstacle avoidance）を確認しました．
+
+behaivior pathでは，画像のfalseの部分をtrueにして，全てを対象に回避動作をするようにしてみたのですが，特に動作は変わりませんでした．
+obstacle avoidanceでは，どこがon offのトリガーになっているのかがわからず，falseの部分をtrueにしてみたりといじってみたのですが特に変わらずという形でした．
+
+回避動作ができるようにしたいのですが，
+&gt; obstacle avoidabceの回避はoff
+というのは，どこかのパラメータをtrueにしたりというのではなく，特定のパラメータの数値が小さすぎたり，大きすぎたりするということなのでしょうか．
+
+どこのパラメータを調整すれば，回避動作が生成されるのかがわからないので教えていただけるとありがたいです．
+
+よろしくお願いします．",<@U05D5KQAZG8>さんがチャンネルに参加しました,,"<@U05GYU2JDJ5>
+&gt; コンテスト用のdocker imageにsrcが無かったため、<https://github.com/autowarefoundation/autoware|autoware>からsrcをdownloadし
+docker のbuildの際に既にあるdocker imageをloadして環境を作成しているため、autoware のdownloadをすると逆に環境がおかしくなってしまいます。
+
+一旦もとに戻すにはbuildで生成されたbuild installを消す必要があります。
+
+具体的にはsetupのページの以下のコマンドでautowareのdockerをdownloadしており、build.shで以下のimageをloadしてdocker imageを新たに生成しています。
+`docker pull <http://ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1|ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1>`","<@U05FDLCUYG6>
+AI Challengeで使われているautowareのversionはautoware: awsim-stableのbranchになります
+we use awsim-stable version of <https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable|autoware.universe> &amp; <https://github.com/AutomotiveAIChallenge/autoware|autoware>","<@U05FDLCUYG6>
+&gt; I hope we can use the GNSS and IMU data from the simulator to train the model, Can we?
+You can use GNSS and IMU data which is included in AWSIM.
+Is this an answer you want?","I could not login to <https://aichallenge.synesthesias.jp/>
+Even I click on ""Reset password"", I got an error ""Username/client id combination not found.""
+
+How do I log in from my email?",

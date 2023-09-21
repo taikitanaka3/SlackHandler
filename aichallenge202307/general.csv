@@ -1,0 +1,84 @@
+canvas_in_the_conversation,2023-08-23,2023-07-13,2023-06-15,2023-07-10,2023-09-07,2023-07-06,2023-06-14,2023-07-11,2023-07-12
+,すみません、私もチーム名とDisplay Nameに何を設定したか失念してしまったのですが、確認していただけないでしょうか。(表示がFull Nameになってしまっており申し訳ありません) よろしくお願いいたします。,"<@U05C14GC97Z> cc:  <@U05CCP5L7D3>
+こちらDMで対応します。
+<@U05GNNHB6LC>
+後ほど登録情報を教えてください。","*Workspace Policy* <!channel>
+本ワークスペースは2023年度の7月から10月にかけて実施される自動運転AIチャレンジ2023インテグレーション大会のために運用されます。
+参加者の皆様には、以下のポリシーを順守いただくことをお願い申し上げます。
+
+①アカウントの設定について
+• 登録のアカウント名について
+    ◦ 表示名について、原則「[チーム名]_[氏名 or メンバー名]」でお願いします。
+• 例：AIChallenge運営_崎山
+    ◦ メンションを飛ばす際の利便性に関わるので、なるべくご協力おねがいします。プロフィール設定から変更できます。
+• *タイトルについて*
+    ◦ *事前登録時のアドレスとスラックに登録しているアドレスが異なる場合は記載してください*
+    ◦ *チームの代表の方は代表と記載してください。（必須）*
+• *部門の間違いがないかの確認のため可能であれば学生部門の方は研究室、会社所属の方は会社名を記載してください*
+    ◦ 例：株式会社〇〇_代表：<mailto:example@gmail.com|example@gmail.com>
+②メンションについて
+各者いずれも、メンション（＠〇〇）する際に、「様」等の敬称は不要です。
+
+③チャネルについて
+プリセットとしてこちらでチャネルを用意しましたが、各自が自由にチャネルを作成可能です。
+参加チーム間の情報共有を歓迎しているため、基本的に各チャネルはオープンとし、誰でも参加可能とします。各チームごとのプライベートチャンネルの作成も可能とします。
+チャネルは左メニューのその他→チャンネル検索から参加可能です。
+ただし、未発表情報を含む場合があるため、本ワークスペースで得た情報は外部に漏洩しないよう注意をお願いします。
+また、秘匿情報を扱う場合はプライベートチャネルを立ち上げて下さい。
+
+④参加について
+各チームごとに1名は必ず参加してください。
+また、チームメンバーへのslackの追加は事前登録を済ませればいつでも追加可能です。
+<https://forms.office.com/r/ZbrHBqHj4U|参加登録はこちらから>
+大会参加者でない人の参加が必要な場合は運営に相談してください。
+
+⑤データ共有について
+本ワークスペースはフリープランで利用しているため、データ共有は別途外部のオンラインストレージで行うことを推奨します。
+ただし、消えるの前提で問題なければSlack上でやり取りしてもOKです。
+
+⑥今後のお知らせについて
+今後のお知らせはslackで完結するので適宜フォローお願いします。
+
+--
+
+This workspace will be used for the Automotive AI Challenge 2023 Integration Competition, which will take place from July to October 2023.
+We ask that all participants adhere to the following policies:
+
+(1) Account Settings
+• Account Name for Registration
+    ◦ In principle, ""Display Name"" should be ""[Team Name]_[Last Name or Nick Name]"".
+• Example: ""AIChallenge運営_崎山""
+    ◦ This is for the convenience of sending mentions, so we ask for your cooperation. You can change this in your profile settings.
+• About the title
+    ◦ If the address at the time of pre-registration and the address registered in Slack are different, please state
+    ◦ If you are the representative of a team, please state ""Representative"". (Required)
+• If possible, please provide the name of your laboratory if you are a student, and the name of your company if you belong to a company, so that we can confirm that there are no mistakes in your department.
+    ◦ Example: ""Company Name""_Representative: <mailto:example@gmail.com|example@gmail.com>
+(2) Mention
+When you send a Mention (@____), you do not need to use honorific titles.
+
+(3) Channels
+We have prepared channels as a preset, but each participant is free to create his/her own channel.
+Since we welcome information sharing among participating teams, basically, each channel will be open and anyone can join. Private channels can also be created for each team.
+Channels can be accessed from the ""Others"" menu on the left-hand side of the screen, then ""Search Channels.
+However, please be careful not to leak any information obtained in this workspace to outside parties, as it may contain unpublished information.
+If you wish to use a private channel for confidential information, please create a private channel.
+
+(4) Participation
+At least one person from each team must participate.
+You can add slack to your team members at any time after pre-registration.
+<https://forms.office.com/r/ZbrHBqHj4U|Click here for registration>
+If you need someone who is not a participant of the tournament to join, please consult with the management.
+
+5) Data Sharing
+Since this workspace is used under the free plan, it is recommended that data sharing be done through a separate external online storage.
+However, if you have no problem with the premise of disappearing, you can share on Slack.
+
+(6) Future announcements
+Future announcements will be completed via slack, so please follow up as appropriate.","<@U05FDLCUYG6>
+Thank you for the question.
+<@U05CFHNAZ8B>
+How do you think?","<!channel>
+もしよろしければ、皆さんのSlackのプロフィールアイコンを設定してください。
+If you don't mind, please set your Slack profile icon.",Do we have materials or recordings shared in the Rookie Competition? It will be helpful for new members to learn and try out in our solution.,<@U05C14GC97Z>さんがチャンネルに参加しました,すみません、チーム名を失念してしまったのですが、分かる方法はありますでしょうか？,"<@U05FDLCUYG6>
+I asked rookie competition organizer but they said there is no materials to show in public. I feel sorry for that."
